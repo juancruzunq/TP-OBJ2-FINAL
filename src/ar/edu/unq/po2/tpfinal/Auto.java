@@ -5,5 +5,6 @@ public class Auto {
 	
 	public String getPatente() {
 		return this.patente;
+		
 	}
 }
