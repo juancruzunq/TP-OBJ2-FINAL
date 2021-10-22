@@ -6,6 +6,5 @@ public class Conductor {
 	
 	public void estacionarPorCompraPuntual(int horas) {
 		sem.registrarEstacionamientoPuntual(this.auto.getPatente(), horas);
-		
 	}
 }
