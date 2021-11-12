@@ -7,9 +7,10 @@ public class REstacionamientoApp extends REstacionamiento {
 		super(patente, horaInicio, horaFin);
 		this.celular = celular;
 	}
-
-	public Celular getCelular() {
-		return celular;
+	
+	@Override
+	public Integer getCelularNumero() {
+		return celular.getNumero();
 	}
 
 	public void setCelular(Celular celular) {

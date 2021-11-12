@@ -1,5 +1,6 @@
 package matiasDominguez;
 
+
 public class Auto {
 	private String patente;
 	

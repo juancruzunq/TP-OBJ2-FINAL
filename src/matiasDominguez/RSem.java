@@ -34,4 +34,9 @@ public class RSem {
 	public void registrarCredito(Celular celular, int credito) {
 		registroDeCreditos.put(celular, credito);
 	}
+	
+	public ArrayList<REstacionamiento> getRegistroDeEstacionamientos() {
+		return registroDeEstacionamientos;
+	}
+	
 }

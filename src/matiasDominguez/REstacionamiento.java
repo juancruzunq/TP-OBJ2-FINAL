@@ -30,4 +30,9 @@ public class REstacionamiento {
 	public void setHoraFin(int horaFin) {
 		this.horaFin = horaFin;
 	}
+	
+	
+	public Integer getCelularNumero() {
+		return 0;
+	}
 }

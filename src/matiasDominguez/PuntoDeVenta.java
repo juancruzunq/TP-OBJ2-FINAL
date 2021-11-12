@@ -1,12 +1,13 @@
 package matiasDominguez;
 
+
 public class PuntoDeVenta {
 	private Reloj reloj;
 	private RSem sem;
 	private ZonaDeEstacionamiento zona;
 	
 	public void recargarCelular(Celular celular, int monto) {
-		celular.setSaldo(celular.getCredito() + monto);
+		celular.setCredito(celular.getCredito() + monto);
 		registrarRecargaCelular(celular, monto);
 	}
 
@@ -27,5 +28,7 @@ public class PuntoDeVenta {
 	private void registrarRecargaCelular(Celular celular, int monto) {
 		RRecarga registro = new RRecargaCelular(this, reloj.getFechaActual(), reloj.getHoraActual(), monto, celular);
 		sem.registrarCompra(registro);
+		sem.registrarCredito(celular ,monto);
+		celular.setRecarga(monto);
 	}
 }
