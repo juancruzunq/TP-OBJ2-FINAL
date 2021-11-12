@@ -28,5 +28,9 @@ public class ZonaDeEstacionamiento implements RelojListener{
 	public void agregarPuntoDeVenta(PuntoDeVenta puntoDeVenta) {
 		puntosDeVenta.add(puntoDeVenta);
 	}
-	
+
+	public ArrayList<REstacionamiento> getEstacionamientosVigentes() {
+		return estacionamientosVigentes;
+	}
+
 }
