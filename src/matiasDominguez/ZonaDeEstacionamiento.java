@@ -15,7 +15,7 @@ public class ZonaDeEstacionamiento implements RelojListener{
 	public void horaActualizada(int hora) {
 		for (REstacionamiento estacionamiento : estacionamientosVigentes) {
 			if (estacionamiento.getHoraFin() <= hora) {
-				estacionamientosVigentes.remove(estacionamiento);
+				eliminarRegistro(estacionamiento);
 			}
 		}
 	}
@@ -31,6 +31,16 @@ public class ZonaDeEstacionamiento implements RelojListener{
 
 	public ArrayList<REstacionamiento> getEstacionamientosVigentes() {
 		return estacionamientosVigentes;
+	}
+	
+	public void finalizarEstacionamientoVigente(REstacionamiento estacionamiento) {
+		
+		eliminarRegistro(estacionamiento);
+	
+	}
+	
+	public void eliminarRegistro(REstacionamiento estacionamiento) {
+		estacionamientosVigentes.remove(estacionamiento);
 	}
 
 }

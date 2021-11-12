@@ -7,7 +7,7 @@ public class Celular {
 	private Integer numero ; 
 	private ArrayList <Integer> recargas ;
 	private App app = new App();
-	
+	private Reloj reloj ;
 	
 
 	public ArrayList<Integer> getRecargas() {
@@ -19,10 +19,19 @@ public class Celular {
 	}
 
 
-	public Celular(int credito, int numero) {
+	public Celular(int credito, int numero,Reloj reloj) {
 		super();
 		this.credito = credito;
 		this.numero = numero;
+		this.reloj = reloj;
+	}
+
+	public Reloj getReloj() {
+		return reloj;
+	}
+
+	public void setReloj(Reloj reloj) {
+		this.reloj = reloj;
 	}
 
 	public int getNumero() {
@@ -52,12 +61,12 @@ public class Celular {
 		this.app = app;
 	}
 
-	public void appInicioEstacionamiento(RSem sem,String patente,Celular celular,int horaActual) {
-		app.inicioEstacionamiento(sem, patente, celular, horaActual);
+	public void appInicioEstacionamiento(ZonaDeEstacionamiento zona, RSem sem,String patente,Celular celular) {
+		app.inicioEstacionamiento(zona,sem, patente, celular);
 	}
 	
-	public void appFinEstacionamiento(RSem sem ,Celular celular,int horaFin) {
-		app.finEstacionamiento(sem ,celular,horaFin);
+	public void appFinEstacionamiento(ZonaDeEstacionamiento zona, RSem sem ,Celular celular) {
+		app.finEstacionamiento(zona,sem ,celular);
 	}
 
 }

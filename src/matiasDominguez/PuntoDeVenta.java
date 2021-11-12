@@ -3,32 +3,41 @@ package matiasDominguez;
 
 public class PuntoDeVenta {
 	private Reloj reloj;
-	private RSem sem;
 	private ZonaDeEstacionamiento zona;
 	
-	public void recargarCelular(Celular celular, int monto) {
+	public void recargarCelular(RSem sem,Celular celular, int monto) {
 		celular.setCredito(celular.getCredito() + monto);
-		registrarRecargaCelular(celular, monto);
+		registrarRecargaCelular(null, celular, monto);
 	}
 
-	public void compraPuntual(Auto auto, int horas) {
+	public Integer compraPuntual(RSem sem ,Auto auto, int horas) {
 		int horaFin = reloj.getHoraActual() + horas;
 		REstacionamiento estacionamiento = new REstacionamientoPuntual(auto.getPatente(), reloj.getHoraActual(), horaFin, horas);
 		zona.agregarVigente(estacionamiento);
 		sem.registrarEstacionamiento(estacionamiento);
-		registrarCompraPuntual(horas);
+		registrarCompraPuntual(sem, horas);
+		
+		return this.cobroPuntual(horas);
 	}
 	
-	private void registrarCompraPuntual(int horas) {
+	private Integer cobroPuntual(int horas) {
+		// TODO Auto-generated method stub
+		
+		return horas*40;
+	}
+
+	private void registrarCompraPuntual(RSem sem,int horas) {
 		RRecarga registro = new RCompraPuntual(this, reloj.getFechaActual(), reloj.getHoraActual(), horas);
 		sem.registrarCompra(registro);
 		
 	}
 
-	private void registrarRecargaCelular(Celular celular, int monto) {
+	private void registrarRecargaCelular(RSem sem ,Celular celular, int monto) {
 		RRecarga registro = new RRecargaCelular(this, reloj.getFechaActual(), reloj.getHoraActual(), monto, celular);
 		sem.registrarCompra(registro);
 		sem.registrarCredito(celular ,monto);
 		celular.setRecarga(monto);
 	}
+	
+	
 }
