@@ -1,15 +1,15 @@
 package projectofinal.Apps;
 
 import projectofinal.Dispositivos.Celular;
-import projectofinal.Sem.RSem;
+import projectofinal.Sem.Sem;
 
 
 public interface MovementSensor {
 	
 	
-	public void walking(RSem sem, String patente, Celular celular);
+	public void walking(Sem sem, String patente, Celular celular);
 
 
 
-	public void driving(RSem sem, Celular celular);
+	public void driving(Sem sem, Celular celular);
 }

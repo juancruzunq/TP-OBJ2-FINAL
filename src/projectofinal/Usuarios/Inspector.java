@@ -3,7 +3,7 @@ package projectofinal.Usuarios;
 import projectofinal.Dispositivos.Celular;
 import projectofinal.Dispositivos.DispositivoMovil;
 import projectofinal.Estacionamiento.ZonaDeEstacionamiento;
-import projectofinal.Sem.RSem;
+import projectofinal.Sem.Sem;
 
 
 public class Inspector {
@@ -34,7 +34,7 @@ public class Inspector {
 
 
 
-	public void appConsultaDeEstacionamientoVigente(RSem sem ,Inspector inspector,Auto auto) {
+	public void appConsultaDeEstacionamientoVigente(Sem sem ,Inspector inspector,Auto auto) {
 		app.consultaDeEstacionamientoVigente(sem,this,auto, getEstacionamiento());
 	}
 	

@@ -7,7 +7,7 @@ import projectofinal.Estacionamiento.REstacionamiento;
 import projectofinal.Estacionamiento.ZonaDeEstacionamiento;
 import projectofinal.Reloj.Reloj;
 import projectofinal.Sem.RInfraccion;
-import projectofinal.Sem.RSem;
+import projectofinal.Sem.Sem;
 import projectofinal.Usuarios.Auto;
 import projectofinal.Usuarios.Inspector;
 
@@ -20,7 +20,7 @@ public class DispositivoMovil {
 	}
 
 	
-	public void consultaDeEstacionamientoVigente(RSem sem ,Inspector inspector,Auto auto, ZonaDeEstacionamiento estacionamiento) {
+	public void consultaDeEstacionamientoVigente(Sem sem ,Inspector inspector,Auto auto, ZonaDeEstacionamiento estacionamiento) {
 		
 		if(!consultaDeEstacionamientoVigente( auto,estacionamiento)) 
 		{
@@ -42,7 +42,7 @@ public class DispositivoMovil {
 	}
 	
 	
-	public void altaDeInfraccion(RSem sem ,Inspector inspector, Auto auto, ZonaDeEstacionamiento estacionamiento) {
+	public void altaDeInfraccion(Sem sem ,Inspector inspector, Auto auto, ZonaDeEstacionamiento estacionamiento) {
 		Date fechaActual = reloj.getFechaActual();
 		int horaActual =reloj.getHoraActual();
 		RInfraccion infraccion = new RInfraccion(fechaActual,horaActual,inspector , estacionamiento);

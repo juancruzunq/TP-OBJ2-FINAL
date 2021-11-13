@@ -4,7 +4,7 @@ import projectofinal.Apps.AppCliente;
 import projectofinal.Apps.ModoApp;
 import projectofinal.Estacionamiento.ZonaDeEstacionamiento;
 import projectofinal.Reloj.Reloj;
-import projectofinal.Sem.RSem;
+import projectofinal.Sem.Sem;
 
 
 public class Celular {
@@ -52,11 +52,11 @@ public class Celular {
 		this.app = app;
 	}
 
-	public void appInicioEstacionamiento(RSem sem,String patente) {
+	public void appInicioEstacionamiento(Sem sem,String patente) {
 		app.inicioEstacionamiento(sem, patente, this);
 	}
 	
-	public void appFinEstacionamiento(RSem sem) {
+	public void appFinEstacionamiento(Sem sem) {
 		app.finEstacionamiento(sem ,this);
 	}
 

@@ -6,9 +6,7 @@ import projectofinal.Dispositivos.Celular;
 import projectofinal.Estacionamiento.REstacionamiento;
 import projectofinal.Estacionamiento.REstacionamientoApp;
 import projectofinal.Estacionamiento.ZonaDeEstacionamiento;
-import projectofinal.Sem.RSem;
-
-
+import projectofinal.Sem.Sem;
 
 
 public class AppCliente implements MovementSensor {
@@ -18,7 +16,7 @@ public class AppCliente implements MovementSensor {
 	private Boolean estaVigente ;
 	
 
-	public void inicioEstacionamiento(RSem sem, String patente, Celular celular) {
+	public void inicioEstacionamiento(Sem sem, String patente, Celular celular) {
 		ZonaDeEstacionamiento zona = celular.getGps();
 		REstacionamientoApp estacionamiento = new REstacionamientoApp(patente,celular.getReloj().getHoraActual() ,0, celular);
 		sem.registrarEstacionamiento(estacionamiento);
@@ -27,7 +25,7 @@ public class AppCliente implements MovementSensor {
 		this.setEstaVigente(true);
 	}
 
-	public void finEstacionamiento(RSem sem, Celular celular) {
+	public void finEstacionamiento(Sem sem, Celular celular) {
 		ZonaDeEstacionamiento zona = celular.getGps();
 		Integer numTel = celular.getNumero();
 		ArrayList<REstacionamiento> registros = zona.getEstacionamientosVigentes();
@@ -39,7 +37,7 @@ public class AppCliente implements MovementSensor {
 	}
 	
 	
-	private StringBuffer mensajeInicioEstacionamiento(RSem sem , Celular celular) {
+	private StringBuffer mensajeInicioEstacionamiento(Sem sem , Celular celular) {
 		StringBuffer mensaje= new StringBuffer();  
 		
 		if(sem.obtenerSaldo(celular) < 40) {
@@ -70,7 +68,7 @@ public class AppCliente implements MovementSensor {
 	}
 	
 
-	private StringBuffer horaMaximaControlador(RSem sem, Celular celular) {
+	private StringBuffer horaMaximaControlador(Sem sem, Celular celular) {
 		StringBuffer mensaje = new StringBuffer();
 		Integer credito = sem.obtenerSaldo(celular);
 		int tiempoDisponible = (credito / 40);
@@ -108,7 +106,7 @@ public class AppCliente implements MovementSensor {
 	}
 
 	@Override
-	public void driving(RSem sem, Celular celular) {
+	public void driving(Sem sem, Celular celular) {
 		if(modoMovimiento==ModoMovimiento.Walking && this.getEstaVigenteEnMismaZona(celular)) {
 			this.setModoMovimiento(ModoMovimiento.Driving);
 			if(modoApp==ModoApp.Automatico) {
@@ -128,7 +126,7 @@ public class AppCliente implements MovementSensor {
 	}
 
 	@Override
-	public void walking(RSem sem, String patente, Celular celular) {
+	public void walking(Sem sem, String patente, Celular celular) {
 		if(modoMovimiento==ModoMovimiento.Driving && !this.getEstaVigente() && celular.estaEnZonaDeEstacionamiento()) {
 			this.setModoMovimiento(ModoMovimiento.Walking);
 			if(modoApp==ModoApp.Automatico) {

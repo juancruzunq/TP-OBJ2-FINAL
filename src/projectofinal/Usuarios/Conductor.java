@@ -3,7 +3,7 @@ package projectofinal.Usuarios;
 import projectofinal.Apps.ModoApp;
 import projectofinal.Dispositivos.Celular;
 import projectofinal.Sem.PuntoDeVenta;
-import projectofinal.Sem.RSem;
+import projectofinal.Sem.Sem;
 
 
 public class Conductor {
@@ -34,15 +34,15 @@ public class Conductor {
 		this.celular = celular;
 	}
 	
-	public void celularInicioEstacionamiento(RSem sem) {
+	public void celularInicioEstacionamiento(Sem sem) {
 		celular.appInicioEstacionamiento(sem, this.getAuto().getPatente());
 	}
 	
-	public void celularFinEstacionamiento(RSem sem) {
+	public void celularFinEstacionamiento(Sem sem) {
 		celular.appFinEstacionamiento(sem);
 	}
 	
-	public void puntoDeVentaEstacionamiento(RSem sem ,int horas,PuntoDeVenta puntoVenta) {
+	public void puntoDeVentaEstacionamiento(Sem sem ,int horas,PuntoDeVenta puntoVenta) {
 		puntoVenta.compraPuntual(sem , this.getAuto(),horas);
 	}
 	
@@ -50,7 +50,7 @@ public class Conductor {
 		celular.cambiarModo(modo);
 	}
 	
-	public Integer obtenerSaldo(RSem sem) {
+	public Integer obtenerSaldo(Sem sem) {
 		
 		return sem.obtenerSaldo(celular);
 	}
