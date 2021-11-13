@@ -42,5 +42,12 @@ public class ZonaDeEstacionamiento implements RelojListener{
 	public void eliminarRegistro(REstacionamiento estacionamiento) {
 		estacionamientosVigentes.remove(estacionamiento);
 	}
+	
+	public boolean esEstacionamientoVigente(String patente) {
+		 ArrayList<REstacionamiento> estacionamientosVigentes = this.getEstacionamientosVigentes();
+		 Boolean estacionamiento = (Boolean) estacionamientosVigentes.stream().anyMatch(r -> r.getPatente().equals(patente));
+		 
+		 return estacionamiento;
+	}
 
 }

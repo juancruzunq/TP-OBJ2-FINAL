@@ -45,4 +45,9 @@ public class Conductor {
 	public void puntoDeVentaEstacionamiento(RSem sem ,int horas,PuntoDeVenta puntoVenta) {
 		puntoVenta.compraPuntual(sem , this.getAuto(),horas);
 	}
+	
+	public Integer obtenerSaldo(RSem sem) {
+		
+		return sem.obtenerSaldo(celular);
+	}
 }

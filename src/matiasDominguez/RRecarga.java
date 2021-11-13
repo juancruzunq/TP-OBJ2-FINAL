@@ -47,5 +47,7 @@ public abstract class RRecarga {
 	public void setNumeroDeControl(int numeroDeControl) {
 		this.numeroDeControl = numeroDeControl;
 	}
+	
+	
 
 }

@@ -6,6 +6,7 @@ public class Inspector {
 	private String nombre;
 	private Celular celular;
 	private ZonaDeEstacionamiento estacionamiento;
+	private DispositivoMovil app = new DispositivoMovil();
 	
 	
 	
@@ -18,20 +19,27 @@ public class Inspector {
 		this.estacionamiento = estacionamiento;
 	}
 
+	
+	
+	public DispositivoMovil getApp() {
+		return app;
+	}
 
-	
-	public void mandarConsulta( Auto auto, ZonaDeEstacionamiento estacionamiento) {
-		AppInspector app = new AppInspector();
-		app.consultaDeEstacionamientoVigente(auto,estacionamiento);
+
+
+	public void setApp(DispositivoMovil app) {
+		this.app = app;
+	}
+
+
+
+	public void appConsultaDeEstacionamientoVigente(RSem sem ,Inspector inspector,Auto auto) {
+		app.consultaDeEstacionamientoVigente(sem,this,auto, getEstacionamiento());
 	}
 	
 	
 	
-	public void mandarInfraccion(Inspector this, Auto auto, ZonaDeEstacionamiento estacionamiento) {
-		AppInspector app = new AppInspector();
-		app.AltaDeInfraccion(this,auto,estacionamiento);
-		
-	}
+	
 	
 	
 	public ZonaDeEstacionamiento getEstacionamiento() {

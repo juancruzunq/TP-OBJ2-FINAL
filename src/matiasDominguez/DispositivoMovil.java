@@ -3,22 +3,22 @@ package matiasDominguez;
 import java.util.ArrayList;
 import java.util.Date;
 
-public class AppInspector {
+public class DispositivoMovil {
 
-private RSem sem;
+	private Reloj reloj ;
 	
-	
-	
-	public AppInspector() {
+	public DispositivoMovil() {
 		
 	}
 
-	public RSem getSem() {
-		return sem;
-	}
-
-	public void setSem(RSem sem) {
-		this.sem = sem;
+	
+	public void consultaDeEstacionamientoVigente(RSem sem ,Inspector inspector,Auto auto, ZonaDeEstacionamiento estacionamiento) {
+		
+		if(!consultaDeEstacionamientoVigente( auto,estacionamiento)) 
+		{
+			altaDeInfraccion(sem, inspector, auto, estacionamiento);
+		}
+		
 	}
 
 
@@ -28,15 +28,16 @@ private RSem sem;
 			if(vigente.getPatente() == auto.getPatente()) {
 				return autoVigente = true;
 			}
+			
 		}
 		return autoVigente;
 	}
 	
 	
-	public void AltaDeInfraccion(Inspector inspector, Auto auto, ZonaDeEstacionamiento estacionamiento) {
-		Date fechaActual = new Date();
-		String horaActual = fechaActual.getHours() + "" + fechaActual.getMinutes();
-		RInfraccion infraccion = new RInfraccion(fechaActual,0,inspector , estacionamiento);
+	public void altaDeInfraccion(RSem sem ,Inspector inspector, Auto auto, ZonaDeEstacionamiento estacionamiento) {
+		Date fechaActual = reloj.getFechaActual();
+		int horaActual =reloj.getHoraActual();
+		RInfraccion infraccion = new RInfraccion(fechaActual,horaActual,inspector , estacionamiento);
 		sem.registrarInfraccion(auto, infraccion);
 	}
 	

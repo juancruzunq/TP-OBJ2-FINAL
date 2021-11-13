@@ -1,33 +1,26 @@
 package matiasDominguez;
 
-import java.util.ArrayList;
+
 
 public class Celular {
-	private int credito ;
 	private Integer numero ; 
-	private ArrayList <Integer> recargas ;
-	private App app = new App();
+	private AppCliente app = new AppCliente();
 	private Reloj reloj ;
-	
-
-	public ArrayList<Integer> getRecargas() {
-		return recargas;
-	}
-
-	public void setRecarga(int monto) {
-		this.recargas.add(monto);
-	}
+	private boolean enZonaEstacionamiento = true;
 
 
-	public Celular(int credito, int numero,Reloj reloj) {
+	public Celular( int numero,Reloj reloj) {
 		super();
-		this.credito = credito;
 		this.numero = numero;
 		this.reloj = reloj;
 	}
 
 	public Reloj getReloj() {
 		return reloj;
+	}
+	
+	public boolean getEnZonaEstacionamiento() {
+		return enZonaEstacionamiento;
 	}
 
 	public void setReloj(Reloj reloj) {
@@ -42,22 +35,13 @@ public class Celular {
 		this.numero = numero;
 	}
 
-	public int getCredito() {
-		// TODO Auto-generated method stub
-		return credito;
-	}
-
-	public void setCredito(int i) {
-		// TODO Auto-generated method stub
-		this.credito = i ;
-	}
 	
 	
-	public App getApp() {
+	public AppCliente getApp() {
 		return app;
 	}
 
-	public void setApp(App app) {
+	public void setApp(AppCliente app) {
 		this.app = app;
 	}
 
@@ -68,5 +52,7 @@ public class Celular {
 	public void appFinEstacionamiento(ZonaDeEstacionamiento zona, RSem sem ,Celular celular) {
 		app.finEstacionamiento(zona,sem ,celular);
 	}
+	
+	/*HACER SUPER CLASE QUE LAS 2 CLASES HEREN EL RELOJ "*/
 
 }

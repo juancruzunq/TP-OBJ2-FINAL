@@ -6,7 +6,7 @@ public class PuntoDeVenta {
 	private ZonaDeEstacionamiento zona;
 	
 	public void recargarCelular(RSem sem,Celular celular, int monto) {
-		celular.setCredito(celular.getCredito() + monto);
+		sem.setSaldo(celular ,sem.obtenerSaldo(celular) + monto);
 		registrarRecargaCelular(null, celular, monto);
 	}
 
@@ -35,8 +35,8 @@ public class PuntoDeVenta {
 	private void registrarRecargaCelular(RSem sem ,Celular celular, int monto) {
 		RRecarga registro = new RRecargaCelular(this, reloj.getFechaActual(), reloj.getHoraActual(), monto, celular);
 		sem.registrarCompra(registro);
-		sem.registrarCredito(celular ,monto);
-		celular.setRecarga(monto);
+		
+		
 	}
 	
 	
