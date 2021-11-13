@@ -1,5 +1,10 @@
-package projectofinal;
+package projectofinal.Dispositivos;
 
+import projectofinal.Apps.AppCliente;
+import projectofinal.Apps.ModoApp;
+import projectofinal.Estacionamiento.ZonaDeEstacionamiento;
+import projectofinal.Reloj.Reloj;
+import projectofinal.Sem.RSem;
 
 
 public class Celular {
@@ -65,6 +70,6 @@ public class Celular {
 	}
 	
 	
-	/*HACER SUPER CLASE QUE LAS 2 CLASES HEREN EL RELOJ "*/
+	
 
 }

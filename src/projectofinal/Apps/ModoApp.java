@@ -1,4 +1,4 @@
-package projectofinal;
+package projectofinal.Apps;
 
 public enum ModoApp {
 	Automatico,

@@ -1,6 +1,8 @@
-package projectofinal;
+package projectofinal.Sem;
 
 import java.util.Date;
+
+import projectofinal.Dispositivos.RRecarga;
 
 public class RCompraPuntual extends RRecarga {
 	private int cantidadDeHoras;

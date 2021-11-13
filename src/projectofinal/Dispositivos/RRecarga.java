@@ -1,6 +1,8 @@
-package projectofinal;
+package projectofinal.Dispositivos;
 
 import java.util.Date;
+
+import projectofinal.Sem.PuntoDeVenta;
 
 public abstract class RRecarga {
 	private int numeroDeControl;

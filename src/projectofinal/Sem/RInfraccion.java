@@ -1,6 +1,9 @@
-package projectofinal;
+package projectofinal.Sem;
 
 import java.util.Date;
+
+import projectofinal.Estacionamiento.ZonaDeEstacionamiento;
+import projectofinal.Usuarios.Inspector;
 
 public class RInfraccion {
 	private Date fecha;

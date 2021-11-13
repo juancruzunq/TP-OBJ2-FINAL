@@ -1,4 +1,4 @@
-package projectofinal;
+package projectofinal.Estacionamiento;
 
 public class REstacionamientoPuntual extends REstacionamiento {
 	private int horasPuntuales;

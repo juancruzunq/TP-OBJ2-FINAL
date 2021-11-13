@@ -1,9 +1,15 @@
-package projectofinal;
+package projectofinal.Sem;
 
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+
+import projectofinal.Dispositivos.Celular;
+import projectofinal.Dispositivos.RRecarga;
+import projectofinal.Estacionamiento.REstacionamiento;
+import projectofinal.Usuarios.Auto;
+import projectofinal.Usuarios.Subscriptor;
 
 public class RSem {
 	private ArrayList<REstacionamiento> registroDeEstacionamientos = new ArrayList<REstacionamiento>();

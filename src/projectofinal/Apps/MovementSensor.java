@@ -1,4 +1,8 @@
-package projectofinal;
+package projectofinal.Apps;
+
+import projectofinal.Dispositivos.Celular;
+import projectofinal.Sem.RSem;
+
 
 public interface MovementSensor {
 	

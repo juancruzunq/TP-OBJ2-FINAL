@@ -1,6 +1,10 @@
-package projectofinal;
+package projectofinal.Estacionamiento;
 
 import java.util.ArrayList;
+
+import projectofinal.Reloj.RelojListener;
+import projectofinal.Sem.PuntoDeVenta;
+import projectofinal.Usuarios.Inspector;
 
 public class ZonaDeEstacionamiento implements RelojListener{
 	private Inspector inspector;

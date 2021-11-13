@@ -1,4 +1,10 @@
-package projectofinal;
+package projectofinal.Usuarios;
+
+import projectofinal.Apps.ModoApp;
+import projectofinal.Dispositivos.Celular;
+import projectofinal.Sem.PuntoDeVenta;
+import projectofinal.Sem.RSem;
+
 
 public class Conductor {
 	

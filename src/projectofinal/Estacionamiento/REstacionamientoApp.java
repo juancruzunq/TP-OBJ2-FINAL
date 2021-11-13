@@ -1,4 +1,6 @@
-package projectofinal;
+package projectofinal.Estacionamiento;
+
+import projectofinal.Dispositivos.Celular;
 
 public class REstacionamientoApp extends REstacionamiento {
 	private Celular celular;

@@ -1,5 +1,13 @@
-package projectofinal;
+package projectofinal.Sem;
 
+import projectofinal.Dispositivos.Celular;
+import projectofinal.Dispositivos.RRecarga;
+import projectofinal.Dispositivos.RRecargaCelular;
+import projectofinal.Estacionamiento.REstacionamiento;
+import projectofinal.Estacionamiento.REstacionamientoPuntual;
+import projectofinal.Estacionamiento.ZonaDeEstacionamiento;
+import projectofinal.Reloj.Reloj;
+import projectofinal.Usuarios.Auto;
 
 public class PuntoDeVenta {
 	private Reloj reloj;

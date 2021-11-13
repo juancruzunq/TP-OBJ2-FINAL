@@ -1,4 +1,4 @@
-package projectofinal;
+package projectofinal.Estacionamiento;
 
 public class REstacionamiento {
 	private String patente;

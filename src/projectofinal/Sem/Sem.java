@@ -1,6 +1,9 @@
-package projectofinal;
+package projectofinal.Sem;
 
 import java.util.ArrayList;
+
+import projectofinal.Estacionamiento.ZonaDeEstacionamiento;
+import projectofinal.Reloj.RelojListener;
 
 
 public class Sem implements RelojListener{

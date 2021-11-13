@@ -1,7 +1,15 @@
-package projectofinal;
+package projectofinal.Dispositivos;
 
 import java.util.ArrayList;
 import java.util.Date;
+
+import projectofinal.Estacionamiento.REstacionamiento;
+import projectofinal.Estacionamiento.ZonaDeEstacionamiento;
+import projectofinal.Reloj.Reloj;
+import projectofinal.Sem.RInfraccion;
+import projectofinal.Sem.RSem;
+import projectofinal.Usuarios.Auto;
+import projectofinal.Usuarios.Inspector;
 
 public class DispositivoMovil {
 

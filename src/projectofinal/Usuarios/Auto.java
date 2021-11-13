@@ -1,4 +1,4 @@
-package projectofinal;
+package projectofinal.Usuarios;
 
 public class Auto {
 	private String patente;
