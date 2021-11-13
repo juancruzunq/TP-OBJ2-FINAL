@@ -6,7 +6,7 @@ public class Celular {
 	private Integer numero ; 
 	private AppCliente app = new AppCliente();
 	private Reloj reloj ;
-	private boolean enZonaEstacionamiento = true;
+	private ZonaDeEstacionamiento gps;
 
 
 	public Celular( int numero,Reloj reloj) {
@@ -18,9 +18,13 @@ public class Celular {
 	public Reloj getReloj() {
 		return reloj;
 	}
-	
-	public boolean getEnZonaEstacionamiento() {
-		return enZonaEstacionamiento;
+
+	public ZonaDeEstacionamiento getGps() {
+		return gps;
+	}
+
+	public void setGps(ZonaDeEstacionamiento gps) {
+		this.gps = gps;
 	}
 
 	public void setReloj(Reloj reloj) {
@@ -34,8 +38,6 @@ public class Celular {
 	public void setNumero(int numero) {
 		this.numero = numero;
 	}
-
-	
 	
 	public AppCliente getApp() {
 		return app;
@@ -45,14 +47,22 @@ public class Celular {
 		this.app = app;
 	}
 
-	public void appInicioEstacionamiento(ZonaDeEstacionamiento zona, RSem sem,String patente,Celular celular) {
-		app.inicioEstacionamiento(zona,sem, patente, celular);
+	public void appInicioEstacionamiento(RSem sem,String patente) {
+		app.inicioEstacionamiento(sem, patente, this);
 	}
 	
-	public void appFinEstacionamiento(ZonaDeEstacionamiento zona, RSem sem ,Celular celular) {
-		app.finEstacionamiento(zona,sem ,celular);
+	public void appFinEstacionamiento(RSem sem) {
+		app.finEstacionamiento(sem ,this);
 	}
 
+	public void cambiarModo(ModoApp modo) {
+		app.cambiarAModo(modo);
+		
+	}
+	
+	public boolean estaEnZonaDeEstacionamiento() {
+		return !(this.getGps() == null); 
+	}
 	
 	
 	/*HACER SUPER CLASE QUE LAS 2 CLASES HEREN EL RELOJ "*/

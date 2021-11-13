@@ -2,37 +2,30 @@ package projectofinal;
 
 import java.util.ArrayList;
 
-public class AppCliente implements MovementSensor,Gps   {
+public class AppCliente implements MovementSensor {
 
 	private ModoApp modoApp ;
 	private ModoMovimiento modoMovimiento;
 	private Boolean estaVigente ;
 	
 
-	
-	
-
-	
-
-	public void inicioEstacionamiento(ZonaDeEstacionamiento zona, RSem sem, String patente, Celular celular) {
-		// TODO Auto-generated method stub
-		
-			REstacionamientoApp estacionamiento = new REstacionamientoApp(patente,celular.getReloj().getHoraActual() ,0, celular);
-			sem.registrarEstacionamiento(estacionamiento);
-			zona.agregarVigente(estacionamiento);
-			mensajeInicioEstacionamiento(sem,celular);
-			this.setEstaVigente(true);
-		
+	public void inicioEstacionamiento(RSem sem, String patente, Celular celular) {
+		ZonaDeEstacionamiento zona = celular.getGps();
+		REstacionamientoApp estacionamiento = new REstacionamientoApp(patente,celular.getReloj().getHoraActual() ,0, celular);
+		sem.registrarEstacionamiento(estacionamiento);
+		zona.agregarVigente(estacionamiento);
+		mensajeInicioEstacionamiento(sem,celular);
+		this.setEstaVigente(true);
 	}
 
-	public void finEstacionamiento(ZonaDeEstacionamiento zona  ,RSem sem, Celular celular) {
-		// TODO Auto-generated method stub
+	public void finEstacionamiento(RSem sem, Celular celular) {
+		ZonaDeEstacionamiento zona = celular.getGps();
 		Integer numTel = celular.getNumero();
 		ArrayList<REstacionamiento> registros = zona.getEstacionamientosVigentes();
 		REstacionamiento estacionamiento = (REstacionamiento) registros.stream().filter(r -> r.getCelularNumero().equals(numTel));
 		zona.finalizarEstacionamientoVigente(estacionamiento);
 		sem.setSaldo(celular,(sem.obtenerSaldo(celular) - costoEstacionamiento(estacionamiento)));
-		mensajeFinEstacionamiento(estacionamiento,zona,celular);
+		mensajeFinEstacionamiento(estacionamiento,celular);
 		this.setEstaVigente(false);
 	}
 	
@@ -40,7 +33,7 @@ public class AppCliente implements MovementSensor,Gps   {
 	private StringBuffer mensajeInicioEstacionamiento(RSem sem , Celular celular) {
 		StringBuffer mensaje= new StringBuffer();  
 		
-		if(sem.obtenerSaldo(celular) <40) {
+		if(sem.obtenerSaldo(celular) < 40) {
 			 mensaje.append("Saldo Insuficiente.Estacionamiento no Permitido");
 			
 		}
@@ -51,10 +44,10 @@ public class AppCliente implements MovementSensor,Gps   {
 			mensaje.append("Hora Maxima Fin Estacionamiento :");
 			mensaje.append(this.horaMaximaControlador(sem,celular));
 		}
-		return mensaje ;
+		return mensaje;
 	}
 	
-	private StringBuffer mensajeFinEstacionamiento(REstacionamiento estacionamiento, ZonaDeEstacionamiento zona, Celular celular) {
+	private StringBuffer mensajeFinEstacionamiento(REstacionamiento estacionamiento, Celular celular) {
 		StringBuffer mensaje = new StringBuffer();
 		mensaje.append("Hora Inicio Estacionamiento :"); 
 		mensaje.append(estacionamiento.getHoraInicio()); 
@@ -89,76 +82,61 @@ public class AppCliente implements MovementSensor,Gps   {
 	}
 	
 	
-	
-	public void cambiarModoApp() {
-		ModoApp modo= null;
-		switch (modoApp) {
-		case Automatico:
-			modo = ModoApp.Manual;
-			
-			break;
-
-		default:
-			modo = ModoApp.Automatico;
-		}
-		
-		this.modoApp= modo;
+	public ModoApp getModoApp() {
+		return modoApp;
 	}
-	
-	public void cambiarModoMovimiento() {
-		ModoMovimiento modo= null;
-		switch (modoMovimiento) {
-		case Driving:
-			modo = ModoMovimiento.Walking;
-			
-			break;
 
-		default:
-			modo = ModoMovimiento.Driving;
-		}
-		
-		this.modoMovimiento= modo;
+	public ModoMovimiento getModoMovimiento() {
+		return modoMovimiento;
+	}
+
+	public void setModoApp(ModoApp modoApp) {
+		this.modoApp = modoApp;
+	}
+
+	public void setModoMovimiento(ModoMovimiento modoMovimiento) {
+		this.modoMovimiento = modoMovimiento;
 	}
 
 	@Override
-	public void driving(ZonaDeEstacionamiento zona  ,RSem sem, Celular celular) {
-		// TODO Auto-generated method stub
-		// TODO Auto-generated method stub
-		if(modoApp==ModoApp.Automatico && modoMovimiento==ModoMovimiento.Walking && this.getEstaVigente()) {
-			cambiarModoMovimiento();
-			this.finEstacionamiento(zona, sem, celular);
-			this.alerta("Se detuvo el Estacionamiento Vigente");
+	public void driving(RSem sem, Celular celular) {
+		if(modoMovimiento==ModoMovimiento.Walking && this.getEstaVigenteEnMismaZona(celular)) {
+			this.setModoMovimiento(ModoMovimiento.Driving);
+			if(modoApp==ModoApp.Automatico) {
+				this.finEstacionamiento(sem, celular);
+				this.alerta("Se detuvo el Estacionamiento Vigente");
+			}
+			else {
+				this.alerta("Posible fin de Estacionamiento");
+			}
 		}
-		
 		
 	}
-	
-	
 
 	
+	private boolean getEstaVigenteEnMismaZona(Celular celular) {
+		return celular.getGps().hayEstacionamientoVigenteApp(celular.getNumero());
+	}
+
 	@Override
-	public void walking(ZonaDeEstacionamiento zona, RSem sem, String patente, Celular celular) {
-		// TODO Auto-generated method stub
-		if(modoApp==ModoApp.Automatico && modoMovimiento==ModoMovimiento.Driving && !this.getEstaVigente()) {
-			cambiarModoMovimiento();
-			this.inicioEstacionamiento(zona, sem, patente, celular);
-			this.alerta("Se inicio un  Estacionamiento ");
+	public void walking(RSem sem, String patente, Celular celular) {
+		if(modoMovimiento==ModoMovimiento.Driving && !this.getEstaVigente() && celular.estaEnZonaDeEstacionamiento()) {
+			this.setModoMovimiento(ModoMovimiento.Walking);
+			if(modoApp==ModoApp.Automatico) {
+				this.inicioEstacionamiento(sem, patente, celular);
+				this.alerta("Se inicio un Estacionamiento ");
+			}
+			else {
+				this.alerta("Posible inicio de Estacionamiento");
+			}
 		}
-		
 		
 	}
 
 	private String alerta(String string) {
-		// TODO Auto-generated method stub
 		
 		return string;
 		
-	}
-
-	@Override
-	public void enZonaDeEstacionamiento() {
-		// TODO Auto-generated method stub
-	
 	}
 	
 	public Boolean getEstaVigente() {
@@ -169,10 +147,9 @@ public class AppCliente implements MovementSensor,Gps   {
 		this.estaVigente = estaVigente;
 	}
 
-	
-
-	
-	
-	
+	public void cambiarAModo(ModoApp modo) {
+		this.setModoApp(modo);
+		
+	}
 	
 }

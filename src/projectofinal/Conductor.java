@@ -2,14 +2,8 @@ package projectofinal;
 
 public class Conductor {
 	
-	
-	
-	
 	private Auto auto;
 	private Celular celular;
-	
-	
-	
 	
 	
 	public Conductor(Auto auto, Celular celular) {
@@ -34,16 +28,20 @@ public class Conductor {
 		this.celular = celular;
 	}
 	
-	public void celularInicioEstacionamiento(ZonaDeEstacionamiento zona,RSem sem , Auto auto ,Celular celular) {
-		celular.appInicioEstacionamiento(zona,sem, auto.getPatente(), celular);
+	public void celularInicioEstacionamiento(RSem sem) {
+		celular.appInicioEstacionamiento(sem, this.getAuto().getPatente());
 	}
 	
-	public void celularFinEstacionamiento(ZonaDeEstacionamiento zona,RSem sem , Celular celular) {
-		celular.appFinEstacionamiento(zona,sem, celular);
+	public void celularFinEstacionamiento(RSem sem) {
+		celular.appFinEstacionamiento(sem);
 	}
 	
 	public void puntoDeVentaEstacionamiento(RSem sem ,int horas,PuntoDeVenta puntoVenta) {
 		puntoVenta.compraPuntual(sem , this.getAuto(),horas);
+	}
+	
+	public void celularCambiarModo(ModoApp modo) {
+		celular.cambiarModo(modo);
 	}
 	
 	public Integer obtenerSaldo(RSem sem) {

@@ -45,7 +45,14 @@ public class ZonaDeEstacionamiento implements RelojListener{
 	
 	public boolean esEstacionamientoVigente(String patente) {
 		 ArrayList<REstacionamiento> estacionamientosVigentes = this.getEstacionamientosVigentes();
-		 Boolean estacionamiento = (Boolean) estacionamientosVigentes.stream().anyMatch(r -> r.getPatente().equals(patente));
+		 Boolean estacionamiento = estacionamientosVigentes.stream().anyMatch(r -> r.getPatente().equals(patente));
+		 
+		 return estacionamiento;
+	}
+	
+	public boolean hayEstacionamientoVigenteApp(int numeroDeCelular) {
+		 ArrayList<REstacionamiento> estacionamientosVigentes = this.getEstacionamientosVigentes();
+		 Boolean estacionamiento = estacionamientosVigentes.stream().anyMatch(r -> r.getCelularNumero().equals(numeroDeCelular));
 		 
 		 return estacionamiento;
 	}
