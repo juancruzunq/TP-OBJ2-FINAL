@@ -1,4 +1,4 @@
-package matiasDominguez;
+package projectofinal;
 
 public class REstacionamientoPuntual extends REstacionamiento {
 	private int horasPuntuales;

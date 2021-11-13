@@ -1,4 +1,4 @@
-package matiasDominguez;
+package projectofinal;
 
 public interface Gps {
 	

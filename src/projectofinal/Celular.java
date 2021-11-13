@@ -1,4 +1,4 @@
-package matiasDominguez;
+package projectofinal;
 
 
 
@@ -52,6 +52,8 @@ public class Celular {
 	public void appFinEstacionamiento(ZonaDeEstacionamiento zona, RSem sem ,Celular celular) {
 		app.finEstacionamiento(zona,sem ,celular);
 	}
+
+	
 	
 	/*HACER SUPER CLASE QUE LAS 2 CLASES HEREN EL RELOJ "*/
 
