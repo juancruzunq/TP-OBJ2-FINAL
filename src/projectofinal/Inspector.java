@@ -2,14 +2,10 @@ package projectofinal;
 
 public class Inspector {
 
-	
 	private String nombre;
 	private Celular celular;
 	private ZonaDeEstacionamiento estacionamiento;
 	private DispositivoMovil app = new DispositivoMovil();
-	
-	
-	
 	
 	
 	public Inspector(String nombre, Celular celular, ZonaDeEstacionamiento estacionamiento) {
@@ -19,7 +15,6 @@ public class Inspector {
 		this.estacionamiento = estacionamiento;
 	}
 
-	
 	
 	public DispositivoMovil getApp() {
 		return app;
@@ -36,10 +31,6 @@ public class Inspector {
 	public void appConsultaDeEstacionamientoVigente(RSem sem ,Inspector inspector,Auto auto) {
 		app.consultaDeEstacionamientoVigente(sem,this,auto, getEstacionamiento());
 	}
-	
-	
-	
-	
 	
 	
 	public ZonaDeEstacionamiento getEstacionamiento() {

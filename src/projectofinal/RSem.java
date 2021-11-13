@@ -10,12 +10,14 @@ public class RSem {
 	private ArrayList<RRecarga> registroDeRecargas = new ArrayList<RRecarga>();
 	private Map<Integer , Integer> registroDeCreditos = new HashMap<>();
 	private Map<Auto , List<RInfraccion>> registroDeInfracciones = new HashMap<>();
+	private ArrayList<Subscriptor> subscriptores = new ArrayList<Subscriptor>();
 	private int numeroDeControl = 0;
 	
 	
 	
 	public void registrarEstacionamiento(REstacionamiento registro) {
 		registroDeEstacionamientos.add(registro);
+		this.notificarEstacionamiento(registro);
 	}
 
 	public void registrarCompra(RRecarga registro){
@@ -23,6 +25,7 @@ public class RSem {
 		registroActual.setNumeroDeControl(this.getNumeroDeControl()+1);
 		this.setNumeroDeControl(this.getNumeroDeControl()+1);
 		registroDeRecargas.add(registro);
+		this.notificarCompra(registro);
 		
 	}
 	
@@ -64,4 +67,20 @@ public class RSem {
 		registroDeCreditos.put(numero,monto);
 	}
 	
+	private void notificarCompra(RRecarga compra) {
+        subscriptores.forEach(sub -> sub.alertarCompra(compra));
+    }
+	
+	private void notificarEstacionamiento(REstacionamiento registro) {
+		subscriptores.forEach(sub -> sub.alertarInicioFinEstacionamiento(registro.getHoraInicio(), registro.getHoraFin()));
+		
+	}
+	
+	public void Subscribir(Subscriptor subscriptor) {
+		subscriptores.add(subscriptor);
+	}
+	
+	public void Desubscribir(Subscriptor subscriptor) {
+		subscriptores.remove(subscriptor);
+	}
 }

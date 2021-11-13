@@ -1,10 +1,7 @@
 package projectofinal;
 
-import java.util.ArrayList;
-
 public class Auto {
 	private String patente;
-	
 	
 	
 	public Auto (String patente) {
