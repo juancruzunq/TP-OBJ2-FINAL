@@ -20,7 +20,7 @@ public class DispositivoMovil {
 	}
 
 	
-	public void consultaDeEstacionamientoVigente(Sem sem ,Inspector inspector,Auto auto, ZonaDeEstacionamiento estacionamiento) {
+	public void infraccionEstacionamientoVigente(Sem sem ,Inspector inspector,Auto auto, ZonaDeEstacionamiento estacionamiento) {
 		
 		if(!consultaDeEstacionamientoVigente( auto,estacionamiento)) 
 		{

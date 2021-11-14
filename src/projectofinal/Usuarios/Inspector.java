@@ -35,7 +35,7 @@ public class Inspector {
 
 
 	public void appConsultaDeEstacionamientoVigente(Sem sem ,Inspector inspector,Auto auto) {
-		app.consultaDeEstacionamientoVigente(sem,this,auto, getEstacionamiento());
+		app.infraccionEstacionamientoVigente(sem,this,auto, getEstacionamiento());
 	}
 	
 	
