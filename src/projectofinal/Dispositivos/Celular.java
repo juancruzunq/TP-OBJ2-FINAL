@@ -20,6 +20,7 @@ public class Celular {
 		this.reloj = reloj;
 	}
 	
+	
 	private void instalarApp(AppCliente app) {
 		this.setApp(app);
 	}
