@@ -11,7 +11,7 @@ public class Inspector {
 	private String nombre;
 	private Celular celular;
 	private ZonaDeEstacionamiento estacionamiento;
-	private DispositivoMovil app = new DispositivoMovil();
+	private DispositivoMovil app = new DispositivoMovil(null);
 	
 	
 	public Inspector(String nombre, Celular celular, ZonaDeEstacionamiento estacionamiento) {

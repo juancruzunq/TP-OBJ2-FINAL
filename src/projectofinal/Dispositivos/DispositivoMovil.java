@@ -15,11 +15,15 @@ public class DispositivoMovil {
 
 	private Reloj reloj ;
 	
-	public DispositivoMovil() {
-		
-	}
+	
 
 	
+	public DispositivoMovil(Reloj reloj) {
+		super();
+		this.reloj = reloj;
+	}
+
+
 	public void infraccionEstacionamientoVigente(Sem sem ,Inspector inspector,Auto auto, ZonaDeEstacionamiento estacionamiento) {
 		
 		if(!consultaDeEstacionamientoVigente( auto,estacionamiento)) 

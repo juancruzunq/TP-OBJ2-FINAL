@@ -11,6 +11,11 @@ public class ZonaDeEstacionamiento implements RelojListener{
 	private ArrayList<REstacionamiento> estacionamientosVigentes = new ArrayList<REstacionamiento>();
 	private ArrayList<PuntoDeVenta> puntosDeVenta = new ArrayList<PuntoDeVenta>();
 	
+	
+	
+	
+	
+	
 	public void finalizarEstacionamiento() {
 		estacionamientosVigentes.clear();
 	}
