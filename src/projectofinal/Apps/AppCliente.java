@@ -121,7 +121,7 @@ public class AppCliente implements MovementSensor {
 	}
 
 	
-	private boolean getEstaVigenteEnMismaZona(Celular celular) {
+	private Boolean getEstaVigenteEnMismaZona(Celular celular) {
 		return celular.getGps().hayEstacionamientoVigenteApp(celular.getNumero());
 	}
 
