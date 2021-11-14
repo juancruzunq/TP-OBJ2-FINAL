@@ -69,7 +69,7 @@ public class Celular {
 		
 	}
 	
-	public boolean estaEnZonaDeEstacionamiento() {
+	public Boolean estaEnZonaDeEstacionamiento() {
 		return !(this.getGps() == null); 
 	}
 	

@@ -159,7 +159,7 @@ public class AppCliente implements MovementSensor {
 		
 	}
 
-	public AppCliente(ModoApp modoApp, ModoMovimiento modoMovimiento, Boolean estaVigente) {
+	public  AppCliente(ModoApp modoApp, ModoMovimiento modoMovimiento, Boolean estaVigente) {
 		super();
 		this.modoApp = modoApp;
 		this.modoMovimiento = modoMovimiento;
