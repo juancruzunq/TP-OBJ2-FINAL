@@ -9,7 +9,7 @@ import projectofinal.Sem.Sem;
 
 public class Celular {
 	private Integer numero ; 
-	private AppCliente app = new AppCliente();
+	private AppCliente app ;
 	private Reloj reloj ;
 	private ZonaDeEstacionamiento gps;
 
@@ -18,6 +18,10 @@ public class Celular {
 		super();
 		this.numero = numero;
 		this.reloj = reloj;
+	}
+	
+	private void instalarApp(AppCliente app) {
+		this.setApp(app);
 	}
 
 	public Reloj getReloj() {
