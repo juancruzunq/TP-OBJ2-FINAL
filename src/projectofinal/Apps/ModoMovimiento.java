@@ -37,6 +37,7 @@ public enum ModoMovimiento {
 		}
 	};
 
+	
 	abstract void cambiarAWalking(AppCliente app, Sem sem, String patente, Celular celular);
 
 	abstract void cambiarADriving(AppCliente app, Sem sem, Celular celular);

@@ -148,5 +148,4 @@ public class AppCliente implements MovementSensor {
 	}
 	
 	
-	
 }
