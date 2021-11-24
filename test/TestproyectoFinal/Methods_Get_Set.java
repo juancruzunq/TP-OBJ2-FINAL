@@ -52,6 +52,7 @@ public class Methods_Get_Set {
 	public void setUp() throws Exception {
 		fecha = new Date(1998, 04,1);
 		appCliente = new AppCliente(ModoApp.Manual, ModoMovimiento.Walking, true);
+		fecha = new Date(1998, 04,1);
 		sem = new Sem();
 		reloj = new Reloj(2000,fecha);
 		celular = new Celular(1131263742, reloj);
