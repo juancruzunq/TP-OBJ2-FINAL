@@ -60,6 +60,17 @@ public class Methods_Get_Set {
 		this.conductor = new Conductor(auto, celular);
 		this.dispositivoMovil = new DispositivoMovil(reloj) ;
 		this.puntoDeVenta = new PuntoDeVenta();
+		fecha = new Date(1998, 04,1);
+		appCliente = new AppCliente(ModoApp.MANUAL, ModoMovimiento.Walking, true);
+		sem = new Sem();
+		reloj = new Reloj(2000,fecha);
+		celular = new Celular(1131263742, reloj);
+		zonaEstacionamiento = new ZonaDeEstacionamiento();
+		inspector = new Inspector("Juan Carlos", celular, zonaEstacionamiento);
+		auto = new Auto("KGW855");
+		conductor = new Conductor(auto, celular);
+		dispositivoMovil = new DispositivoMovil(reloj) ;
+		puntoDeVenta = new PuntoDeVenta();
 		
 	}
 	
@@ -68,6 +79,7 @@ public class Methods_Get_Set {
 	public void test_Gets() {
 		
 		assertEquals(this.appCliente.getModoApp(),ModoApp.Manual);
+		assertEquals(appCliente.getModoApp(),ModoApp.MANUAL);
 		assertEquals(appCliente.getModoMovimiento(),ModoMovimiento.Walking);
 		assertEquals(true,appCliente.getEstaVigente());
 		assertEquals(1131263742,celular.getNumero());
