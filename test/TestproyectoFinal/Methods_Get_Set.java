@@ -70,6 +70,7 @@ public class Methods_Get_Set {
 		assertEquals(this.appCliente.getModoApp(),ModoApp.Manual);
 		assertEquals(appCliente.getModoMovimiento(),ModoMovimiento.Walking);
 		assertEquals(true,appCliente.getEstaVigente());
+		assertEquals(1131263742,celular.getNumero());
 	}
 	
 	
