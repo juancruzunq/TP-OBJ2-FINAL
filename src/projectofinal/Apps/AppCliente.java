@@ -107,29 +107,19 @@ public class AppCliente implements MovementSensor {
 
 	@Override
 	public void driving(Sem sem, Celular celular) {
-		if(modoMovimiento==ModoMovimiento.Walking && this.getEstaVigenteEnMismaZona(celular)) {
-			this.setModoMovimiento(ModoMovimiento.Driving);
-			this.getModoApp().ejecutarFinalizacion(sem,celular,this);
-		}
+		this.getModoMovimiento().cambiarADriving(this, sem, celular);
 			
 	}
-		
-
 	
-	private Boolean getEstaVigenteEnMismaZona(Celular celular) {
+	public Boolean getEstaVigenteEnMismaZona(Celular celular) {
 		return celular.getGps().hayEstacionamientoVigenteApp(celular.getNumero());
 	}
 
 	@Override
 	public void walking(Sem sem, String patente, Celular celular) {
-		if(modoMovimiento==ModoMovimiento.Driving && !this.getEstaVigente() && celular.estaEnZonaDeEstacionamiento()) {
-			this.setModoMovimiento(ModoMovimiento.Walking);
-			this.getModoApp().ejecutarIniciacion(sem,celular,patente,this);
-		}
+		this.getModoMovimiento().cambiarAWalking(this, sem, patente, celular);
 			
 	}
-		
-	
 
 	public String alerta(String string) {
 		
@@ -156,7 +146,6 @@ public class AppCliente implements MovementSensor {
 		this.modoMovimiento = modoMovimiento;
 		this.estaVigente = estaVigente;
 	}
-	
 	
 	
 }

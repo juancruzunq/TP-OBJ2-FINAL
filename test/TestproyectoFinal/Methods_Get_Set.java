@@ -34,22 +34,32 @@ import projectofinal.Usuarios.Subscriptor;
 
 public class Methods_Get_Set {
 	
-	AppCliente appCliente ;
-	Sem sem ;
-	Inspector inspector ;
-	Auto auto ;
-	Conductor conductor ;
+	AppCliente appCliente;
+	Sem sem;
+	Inspector inspector;
+	Auto auto;
+	Conductor conductor;
 	DispositivoMovil dispositivoMovil;
-	Celular celular ;
+	Celular celular;
 	ZonaDeEstacionamiento zonaEstacionamiento;
-	Reloj reloj ;
+	Reloj reloj;
 	PuntoDeVenta puntoDeVenta;
-	Date fecha ;
-	
+	Date fecha;
 	
 	@SuppressWarnings("deprecation")
 	@BeforeEach
 	public void setUp() throws Exception {
+		this.fecha = new Date(1998, 04,1);
+		this.appCliente = new AppCliente(ModoApp.Manual, ModoMovimiento.Walking, true);
+		this.sem = new Sem();
+		this.reloj = new Reloj(2000,fecha);
+		this.celular = new Celular(1131263742, reloj);
+		this.zonaEstacionamiento = new ZonaDeEstacionamiento();
+		this.inspector = new Inspector("Juan Carlos", celular, zonaEstacionamiento);
+		this.auto = new Auto("KGW855");
+		this.conductor = new Conductor(auto, celular);
+		this.dispositivoMovil = new DispositivoMovil(reloj) ;
+		this.puntoDeVenta = new PuntoDeVenta();
 		fecha = new Date(1998, 04,1);
 
 		appCliente = new AppCliente(ModoApp.MANUAL, ModoMovimiento.Walking, true);
@@ -73,36 +83,12 @@ public class Methods_Get_Set {
 	@Test
 	public void test_Gets() {
 		
+		assertEquals(this.appCliente.getModoApp(),ModoApp.Manual);
 		assertEquals(appCliente.getModoApp(),ModoApp.MANUAL);
 		assertEquals(appCliente.getModoMovimiento(),ModoMovimiento.Walking);
 		assertEquals(true,appCliente.getEstaVigente());
 		assertEquals(1131263742,celular.getNumero());
 	}
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
 	
 	
 	
