@@ -1,8 +1,9 @@
-package projectofinal.Dispositivos;
+package projectofinal.Apps;
 
 import java.util.ArrayList;
 import java.util.Date;
 
+import projectofinal.Dispositivos.Celular;
 import projectofinal.Estacionamiento.REstacionamiento;
 import projectofinal.Estacionamiento.ZonaDeEstacionamiento;
 import projectofinal.Reloj.Reloj;
@@ -11,15 +12,15 @@ import projectofinal.Sem.Sem;
 import projectofinal.Usuarios.Auto;
 import projectofinal.Usuarios.Inspector;
 
-public class DispositivoMovil {
-
+public class App {
+		
 	private Reloj reloj ;
 	
 	
 
 	
-	public DispositivoMovil(Reloj reloj) {
-		super();
+	public App(Reloj reloj) {
+		
 		this.reloj = reloj;
 	}
 
@@ -47,8 +48,8 @@ public class DispositivoMovil {
 	
 	
 	public void altaDeInfraccion(Sem sem ,Inspector inspector, Auto auto, ZonaDeEstacionamiento estacionamiento) {
-		Date fechaActual = reloj.getFechaActual();
-		int horaActual =reloj.getHoraActual();
+		Date fechaActual = inspector.getCelular().getReloj().getFechaActual();
+		int horaActual =inspector.getCelular().getReloj().getHoraActual();
 		RInfraccion infraccion = new RInfraccion(fechaActual,horaActual,inspector , estacionamiento);
 		sem.registrarInfraccion(auto, infraccion);
 	}
@@ -59,6 +60,4 @@ public class DispositivoMovil {
 	}
 	
 }
-	
-	
 

@@ -1,15 +1,21 @@
 package projectofinal.Apps;
 
+
 import java.util.ArrayList;
+import java.util.Date;
 
 import projectofinal.Dispositivos.Celular;
 import projectofinal.Estacionamiento.REstacionamiento;
 import projectofinal.Estacionamiento.REstacionamientoApp;
 import projectofinal.Estacionamiento.ZonaDeEstacionamiento;
+import projectofinal.Reloj.Reloj;
+import projectofinal.Sem.RInfraccion;
 import projectofinal.Sem.Sem;
+import projectofinal.Usuarios.Auto;
+import projectofinal.Usuarios.Inspector;
 
 
-public class AppCliente implements MovementSensor {
+public class AppCliente extends App implements  MovementSensor {
 
 	private ModoApp modoApp ;
 	private ModoMovimiento modoMovimiento;
@@ -140,12 +146,39 @@ public class AppCliente implements MovementSensor {
 		
 	}
 
-	public  AppCliente(ModoApp modoApp, ModoMovimiento modoMovimiento, Boolean estaVigente) {
-		super();
+	public  AppCliente(Reloj reloj,ModoApp modoApp, ModoMovimiento modoMovimiento, Boolean estaVigente) {
+		super(reloj);
 		this.modoApp = modoApp;
 		this.modoMovimiento = modoMovimiento;
 		this.estaVigente = estaVigente;
 	}
 	
+	
+	
+	
+	public void infraccionEstacionamientoVigente(Sem sem ,Inspector inspector,Auto auto, ZonaDeEstacionamiento estacionamiento) {
+		this.alerta("Usuario denegado sin permiso de admin");
+		
+	}
+
+	
+	
+	@Override
+	public void altaDeInfraccion(Sem sem ,Inspector inspector, Auto auto, ZonaDeEstacionamiento estacionamiento) {
+		this.alerta("Usuario denegado sin permiso de admin");
+	}
+	
+	@Override
+	public boolean consultaDeEstacionamientoVigente(Auto auto, ZonaDeEstacionamiento estacionamiento) {
+		this.alerta("Usuario denegado sin permiso de admin");
+		return false;
+	}
+	
+	@Override
+	public ArrayList<REstacionamiento> estacionamientosVigentes(ZonaDeEstacionamiento estacionamiento) {
+		this.alerta("Usuario denegado sin permiso de admin");
+		return new ArrayList<REstacionamiento>();
+	}
+
 	
 }

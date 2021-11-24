@@ -1,7 +1,6 @@
 package projectofinal.Usuarios;
 
 import projectofinal.Dispositivos.Celular;
-import projectofinal.Dispositivos.DispositivoMovil;
 import projectofinal.Estacionamiento.ZonaDeEstacionamiento;
 import projectofinal.Sem.Sem;
 
@@ -11,7 +10,7 @@ public class Inspector {
 	private String nombre;
 	private Celular celular;
 	private ZonaDeEstacionamiento estacionamiento;
-	private DispositivoMovil app = new DispositivoMovil(null);
+	
 	
 	
 	public Inspector(String nombre, Celular celular, ZonaDeEstacionamiento estacionamiento) {
@@ -22,20 +21,12 @@ public class Inspector {
 	}
 
 	
-	public DispositivoMovil getApp() {
-		return app;
-	}
-
-
-
-	public void setApp(DispositivoMovil app) {
-		this.app = app;
-	}
+	
 
 
 
 	public void appConsultaDeEstacionamientoVigente(Sem sem ,Inspector inspector,Auto auto) {
-		app.infraccionEstacionamientoVigente(sem,this,auto, getEstacionamiento());
+		this.getCelular().getApp().infraccionEstacionamientoVigente(sem,this,auto, getEstacionamiento());
 	}
 	
 	
@@ -47,5 +38,15 @@ public class Inspector {
 
 	public void setEstacionamiento(ZonaDeEstacionamiento estacionamiento) {
 		this.estacionamiento = estacionamiento;
+	}
+
+
+	public Celular getCelular() {
+		return celular;
+	}
+
+
+	public void setCelular(Celular celular) {
+		this.celular = celular;
 	}
 }
