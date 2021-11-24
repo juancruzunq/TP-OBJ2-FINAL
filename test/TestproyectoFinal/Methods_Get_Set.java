@@ -7,7 +7,7 @@ import java.sql.Date;
 import java.util.Arrays;
 import java.util.List;
 
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.BeforeEach;
 
 import projectofinal.Apps.AppCliente;
@@ -71,6 +71,7 @@ public class Methods_Get_Set {
 		assertEquals(appCliente.getModoApp(),ModoApp.Manual);
 		assertEquals(appCliente.getModoMovimiento(),ModoMovimiento.Walking);
 		assertEquals(true,appCliente.getEstaVigente());
+		assertEquals(1131263742,celular.getNumero());
 	}
 	
 	
