@@ -109,16 +109,11 @@ public class AppCliente implements MovementSensor {
 	public void driving(Sem sem, Celular celular) {
 		if(modoMovimiento==ModoMovimiento.Walking && this.getEstaVigenteEnMismaZona(celular)) {
 			this.setModoMovimiento(ModoMovimiento.Driving);
-			if(modoApp==ModoApp.Automatico) {
-				this.finEstacionamiento(sem, celular);
-				this.alerta("Se detuvo el Estacionamiento Vigente");
-			}
-			else {
-				this.alerta("Posible fin de Estacionamiento");
-			}
+			this.getModoApp().ejecutarFinalizacion(sem,celular,this);
 		}
-		
+			
 	}
+		
 
 	
 	private Boolean getEstaVigenteEnMismaZona(Celular celular) {
@@ -129,18 +124,14 @@ public class AppCliente implements MovementSensor {
 	public void walking(Sem sem, String patente, Celular celular) {
 		if(modoMovimiento==ModoMovimiento.Driving && !this.getEstaVigente() && celular.estaEnZonaDeEstacionamiento()) {
 			this.setModoMovimiento(ModoMovimiento.Walking);
-			if(modoApp==ModoApp.Automatico) {
-				this.inicioEstacionamiento(sem, patente, celular);
-				this.alerta("Se inicio un Estacionamiento ");
-			}
-			else {
-				this.alerta("Posible inicio de Estacionamiento");
-			}
+			this.getModoApp().ejecutarIniciacion(sem,celular,patente,this);
 		}
-		
+			
 	}
+		
+	
 
-	private String alerta(String string) {
+	public String alerta(String string) {
 		
 		return string;
 		

@@ -7,7 +7,7 @@ import java.sql.Date;
 import java.util.Arrays;
 import java.util.List;
 
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.BeforeEach;
 
 import projectofinal.Apps.AppCliente;
@@ -51,8 +51,12 @@ public class Methods_Get_Set {
 	@BeforeEach
 	public void setUp() throws Exception {
 		fecha = new Date(1998, 04,1);
-		appCliente = new AppCliente(ModoApp.Manual, ModoMovimiento.Walking, true);
+
+		appCliente = new AppCliente(ModoApp.MANUAL, ModoMovimiento.Walking, true);
 		fecha = new Date(1998, 04,1);
+
+		appCliente = new AppCliente(ModoApp.MANUAL, ModoMovimiento.Walking, true);
+
 		sem = new Sem();
 		reloj = new Reloj(2000,fecha);
 		celular = new Celular(1131263742, reloj);
@@ -69,9 +73,10 @@ public class Methods_Get_Set {
 	@Test
 	public void test_Gets() {
 		
-		assertEquals(appCliente.getModoApp(),ModoApp.Manual);
+		assertEquals(appCliente.getModoApp(),ModoApp.MANUAL);
 		assertEquals(appCliente.getModoMovimiento(),ModoMovimiento.Walking);
 		assertEquals(true,appCliente.getEstaVigente());
+		assertEquals(1131263742,celular.getNumero());
 	}
 	
 	
