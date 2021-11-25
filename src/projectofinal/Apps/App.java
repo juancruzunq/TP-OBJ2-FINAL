@@ -58,6 +58,18 @@ public class App {
 	public ArrayList<REstacionamiento> estacionamientosVigentes(ZonaDeEstacionamiento estacionamiento) {
 		return estacionamiento.getEstacionamientosVigentes();
 	}
+
+
+	public Reloj getReloj() {
+		return reloj;
+	}
+
+
+	public void setReloj(Reloj reloj) {
+		this.reloj = reloj;
+	}
+	
+	
 	
 }
 
