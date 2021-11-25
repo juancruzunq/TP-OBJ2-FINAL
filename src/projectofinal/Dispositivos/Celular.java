@@ -21,7 +21,7 @@ public class Celular {
 	}
 	
 	
-	private void instalarApp(AppCliente app) {
+	public void instalarApp(AppCliente app) {
 		this.setApp(app);
 	}
 
