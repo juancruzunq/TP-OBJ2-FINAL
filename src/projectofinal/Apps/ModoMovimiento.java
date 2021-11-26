@@ -8,7 +8,7 @@ public enum ModoMovimiento {
 	Driving {
 		
 		@Override
-		void cambiarAWalking(AppCliente app, Sem sem, String patente, Celular celular) {
+		public void cambiarAWalking(AppCliente app, Sem sem, String patente, Celular celular) {
 			if(!app.getEstaVigente() && celular.estaEnZonaDeEstacionamiento()) {
 				app.setModoMovimiento(ModoMovimiento.Walking);
 				app.getModoApp().ejecutarIniciacion(sem, celular, patente, app);
@@ -16,7 +16,7 @@ public enum ModoMovimiento {
 		}
 
 		@Override
-		void cambiarADriving(AppCliente app, Sem sem, Celular celular) {
+		public void cambiarADriving(AppCliente app, Sem sem, Celular celular) {
 			
 		}
 	}, 
@@ -24,12 +24,12 @@ public enum ModoMovimiento {
 	Walking {
 		
 		@Override
-		void cambiarAWalking(AppCliente app, Sem sem, String patente, Celular celular) {
+		public void cambiarAWalking(AppCliente app, Sem sem, String patente, Celular celular) {
 			
 		}
 
 		@Override
-		void cambiarADriving(AppCliente app, Sem sem, Celular celular) {
+		public void cambiarADriving(AppCliente app, Sem sem, Celular celular) {
 			if(app.getEstaVigenteEnMismaZona(celular)) {
 				app.setModoMovimiento(ModoMovimiento.Driving);
 				app.getModoApp().ejecutarFinalizacion(sem, celular, app);
@@ -38,7 +38,7 @@ public enum ModoMovimiento {
 	};
 
 	
-	abstract void cambiarAWalking(AppCliente app, Sem sem, String patente, Celular celular);
+	public abstract void cambiarAWalking(AppCliente app, Sem sem, String patente, Celular celular);
 
-	abstract void cambiarADriving(AppCliente app, Sem sem, Celular celular);
+	public abstract void cambiarADriving(AppCliente app, Sem sem, Celular celular);
 }

@@ -155,7 +155,7 @@ public class AppCliente extends App implements  MovementSensor {
 	
 	
 	
-	
+	@Override
 	public void infraccionEstacionamientoVigente(Sem sem ,Inspector inspector,Auto auto, ZonaDeEstacionamiento estacionamiento) {
 		this.alerta("Usuario denegado sin permiso de admin");
 		
