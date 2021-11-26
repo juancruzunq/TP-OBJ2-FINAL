@@ -13,9 +13,16 @@ public class PuntoDeVenta {
 	private Reloj reloj;
 	private ZonaDeEstacionamiento zona;
 	
+	
+	public PuntoDeVenta(Reloj reloj, ZonaDeEstacionamiento zona) {
+		super();
+		this.reloj = reloj;
+		this.zona = zona;
+	}
+
 	public void recargarCelular(Sem sem,Celular celular, int monto) {
-		sem.setSaldo(celular ,sem.obtenerSaldo(celular) + monto);
-		registrarRecargaCelular(null, celular, monto);
+		sem.setSaldo(celular , monto);
+		registrarRecargaCelular(sem, celular, monto);
 	}
 
 	public Integer compraPuntual(Sem sem ,Auto auto, int horas) {

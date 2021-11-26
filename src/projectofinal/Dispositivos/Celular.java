@@ -8,7 +8,7 @@ import projectofinal.Sem.Sem;
 
 
 public class Celular {
-	private Integer numero ; 
+	private int numero ; 
 	private AppCliente app ;
 	private Reloj reloj ;
 	private ZonaDeEstacionamiento gps;

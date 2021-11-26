@@ -2,14 +2,11 @@ package projectofinal.Apps;
 
 
 import java.util.ArrayList;
-import java.util.Date;
-
 import projectofinal.Dispositivos.Celular;
 import projectofinal.Estacionamiento.REstacionamiento;
 import projectofinal.Estacionamiento.REstacionamientoApp;
 import projectofinal.Estacionamiento.ZonaDeEstacionamiento;
 import projectofinal.Reloj.Reloj;
-import projectofinal.Sem.RInfraccion;
 import projectofinal.Sem.Sem;
 import projectofinal.Usuarios.Auto;
 import projectofinal.Usuarios.Inspector;
@@ -147,7 +144,6 @@ public class AppCliente extends App implements  MovementSensor {
 	}
 
 	public  AppCliente(Reloj reloj,ModoApp modoApp, ModoMovimiento modoMovimiento, Boolean estaVigente) {
-		super(reloj);
 		this.modoApp = modoApp;
 		this.modoMovimiento = modoMovimiento;
 		this.estaVigente = estaVigente;

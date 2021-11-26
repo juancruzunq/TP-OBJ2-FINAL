@@ -17,8 +17,8 @@ public class Sem implements RelojListener {
 	private ArrayList<ZonaDeEstacionamiento> zonasDeEstacionamiento = new ArrayList<ZonaDeEstacionamiento>();
 	private ArrayList<REstacionamiento> registroDeEstacionamientos = new ArrayList<REstacionamiento>();
 	private ArrayList<RRecarga> registroDeRecargas = new ArrayList<RRecarga>();
-	private Map<Integer , Integer> registroDeCreditos = new HashMap<>();
-	private Map<Auto , List<RInfraccion>> registroDeInfracciones = new HashMap<>();
+	private Map<Integer , Integer> registroDeCreditos = new HashMap<Integer, Integer>();
+	private Map<Auto , List<RInfraccion>> registroDeInfracciones = new HashMap<Auto , List<RInfraccion>>();
 	private ArrayList<Subscriptor> subscriptores = new ArrayList<Subscriptor>();
 	private int numeroDeControl = 0;
 	
@@ -66,14 +66,20 @@ public class Sem implements RelojListener {
 	public Integer obtenerSaldo(Celular celular) {
 		Integer numero = celular.getNumero();
 		
-		return registroDeCreditos.get(numero);
+		return (int)registroDeCreditos.get(numero);
 		
 	}
 
 	public void setSaldo(Celular celular,Integer monto) {
 		Integer numero = celular.getNumero();
-		
-		registroDeCreditos.put(numero,monto);
+		Integer nuevoMonto;
+		if(registroDeCreditos.containsKey(numero)) {
+			nuevoMonto = registroDeCreditos.get(numero) + monto;
+			registroDeCreditos.put(numero, nuevoMonto);
+		}
+		else {
+			registroDeCreditos.put(numero, monto);
+		}
 	}
 	
 	private void notificarCompra(RRecarga compra) {

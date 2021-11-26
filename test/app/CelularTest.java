@@ -7,6 +7,8 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 
 
 import java.sql.Date;
+import java.util.HashMap;
+import java.util.Map;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -17,6 +19,9 @@ import projectofinal.Apps.ModoMovimiento;
 import projectofinal.Dispositivos.Celular;
 import projectofinal.Estacionamiento.ZonaDeEstacionamiento;
 import projectofinal.Reloj.Reloj;
+import projectofinal.Sem.PuntoDeVenta;
+import projectofinal.Sem.Sem;
+import projectofinal.Usuarios.Conductor;
 
 
 public class CelularTest {
@@ -28,6 +33,9 @@ public class CelularTest {
 	private Reloj reloj ;
 	private ZonaDeEstacionamiento gps;
 	private Celular celular ;
+	private Sem sem ;
+	private PuntoDeVenta puntoDeVenta ;
+	private Conductor conductor;
 	
 	
 	
@@ -41,6 +49,9 @@ public class CelularTest {
 		celular.instalarApp(app);
 		gps = new ZonaDeEstacionamiento();
 		celular.setGps(gps);
+		sem = new Sem();
+		puntoDeVenta = new PuntoDeVenta(reloj, gps);
+		conductor = new Conductor(null, celular);
 	}
 	
 	
@@ -54,7 +65,6 @@ public class CelularTest {
 	}
 	
 	@Test
-	
 	public void test_metodos_gets() {
 		assertEquals(true,celular.estaEnZonaDeEstacionamiento());
 		assertTrue(numero==celular.getNumero());
@@ -64,9 +74,10 @@ public class CelularTest {
 	}
 	
 	
-	
-	
-	
-	
+	@Test
+	public void test() {
+		puntoDeVenta.recargarCelular(sem, celular, 100);
+		assertEquals(conductor.obtenerSaldo(sem), 100);
+	}
 	
 }

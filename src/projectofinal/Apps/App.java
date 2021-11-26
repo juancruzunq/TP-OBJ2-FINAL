@@ -3,27 +3,14 @@ package projectofinal.Apps;
 import java.util.ArrayList;
 import java.util.Date;
 
-import projectofinal.Dispositivos.Celular;
 import projectofinal.Estacionamiento.REstacionamiento;
 import projectofinal.Estacionamiento.ZonaDeEstacionamiento;
-import projectofinal.Reloj.Reloj;
 import projectofinal.Sem.RInfraccion;
 import projectofinal.Sem.Sem;
 import projectofinal.Usuarios.Auto;
 import projectofinal.Usuarios.Inspector;
 
 public class App {
-		
-	private Reloj reloj ;
-	
-	
-
-	
-	public App(Reloj reloj) {
-		
-		this.reloj = reloj;
-	}
-
 
 	public void infraccionEstacionamientoVigente(Sem sem ,Inspector inspector,Auto auto, ZonaDeEstacionamiento estacionamiento) {
 		
@@ -59,17 +46,5 @@ public class App {
 		return estacionamiento.getEstacionamientosVigentes();
 	}
 
-
-	public Reloj getReloj() {
-		return reloj;
-	}
-
-
-	public void setReloj(Reloj reloj) {
-		this.reloj = reloj;
-	}
-	
-	
-	
 }
 
