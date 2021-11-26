@@ -34,7 +34,7 @@ public class App {
 	}
 	
 	
-	public void altaDeInfraccion(Sem sem ,Inspector inspector, Auto auto, ZonaDeEstacionamiento estacionamiento) {
+	private void altaDeInfraccion(Sem sem ,Inspector inspector, Auto auto, ZonaDeEstacionamiento estacionamiento) {
 		Date fechaActual = inspector.getCelular().getReloj().getFechaActual();
 		int horaActual =inspector.getCelular().getReloj().getHoraActual();
 		RInfraccion infraccion = new RInfraccion(fechaActual,horaActual,inspector , estacionamiento);

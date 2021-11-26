@@ -158,12 +158,6 @@ public class AppCliente extends App implements  MovementSensor {
 	}
 
 	
-	
-	@Override
-	public void altaDeInfraccion(Sem sem ,Inspector inspector, Auto auto, ZonaDeEstacionamiento estacionamiento) {
-		this.alerta("Usuario denegado sin permiso de admin");
-	}
-	
 	@Override
 	public boolean consultaDeEstacionamientoVigente(Auto auto, ZonaDeEstacionamiento estacionamiento) {
 		this.alerta("Usuario denegado sin permiso de admin");
