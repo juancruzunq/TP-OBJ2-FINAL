@@ -40,7 +40,7 @@ public class AppCliente extends App implements  MovementSensor {
 	}
 	
 	
-	private StringBuffer mensajeInicioEstacionamiento(Sem sem , Celular celular) {
+	private String mensajeInicioEstacionamiento(Sem sem , Celular celular) {
 		StringBuffer mensaje= new StringBuffer();  
 		
 		if(sem.obtenerSaldo(celular) < 40) {
@@ -54,10 +54,10 @@ public class AppCliente extends App implements  MovementSensor {
 			mensaje.append("Hora Maxima Fin Estacionamiento :");
 			mensaje.append(this.horaMaximaControlador(sem,celular));
 		}
-		return mensaje;
+		return mensaje.toString();
 	}
 	
-	private StringBuffer mensajeFinEstacionamiento(REstacionamiento estacionamiento, Celular celular) {
+	private String mensajeFinEstacionamiento(REstacionamiento estacionamiento, Celular celular) {
 		StringBuffer mensaje = new StringBuffer();
 		mensaje.append("Hora Inicio Estacionamiento :"); 
 		mensaje.append(estacionamiento.getHoraInicio()); 
@@ -67,11 +67,11 @@ public class AppCliente extends App implements  MovementSensor {
 		mensaje.append(estacionamiento.getHoraFin()-estacionamiento.getHoraInicio());
 		mensaje.append("Costo Estacionamiento");
 		mensaje.append(costoEstacionamiento(estacionamiento));
-		return mensaje;
+		return mensaje.toString();
 	}
 	
 
-	private StringBuffer horaMaximaControlador(Sem sem, Celular celular) {
+	private String horaMaximaControlador(Sem sem, Celular celular) {
 		StringBuffer mensaje = new StringBuffer();
 		Integer credito = sem.obtenerSaldo(celular);
 		int tiempoDisponible = (credito / 40);
@@ -80,10 +80,10 @@ public class AppCliente extends App implements  MovementSensor {
 			mensaje.append("20:00");
 		}
 		else {
-			StringBuffer horaActual = celular.getReloj().formatoControlador(horaMaxima);
+			String horaActual = celular.getReloj().formatoControlador(horaMaxima);
 			mensaje.append(horaActual);
 		}
-		return mensaje;
+		return mensaje.toString();
 	}
 	
 	private Integer costoEstacionamiento(REstacionamiento estacionamiento) {

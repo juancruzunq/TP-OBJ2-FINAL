@@ -29,7 +29,9 @@ public class Reloj {
 	}
 
 	private void notificarHoraActual() {
-		for (RelojListener listener : this.listeners) {
+		
+		for (RelojListener listener : listeners) {
+			
 			listener.horaActualizada(this.getHoraActual());
 		}
 	}
@@ -38,14 +40,19 @@ public class Reloj {
 		listeners.add(listener);
 	}
 	
-	public StringBuffer formatoControlador(Integer hora) {
+	public ArrayList<RelojListener> getListener() {
+		
+		return listeners;
+	}
+	
+	public String formatoControlador(Integer hora) {
 
 		String horaString = hora.toString();  
-		String index1 =horaString.substring(0, 1);
-		String index2 =horaString.substring(2, 3);
+		String index1 =horaString.substring(0,2);
+		String index2 =horaString.substring(2, 4);
 		StringBuffer mensaje = new StringBuffer(index1);
 		mensaje.append(":");
 		mensaje.append(index2);
-		return mensaje ;
+		return mensaje.toString() ;
 	}
 }
