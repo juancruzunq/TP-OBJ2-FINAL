@@ -7,6 +7,8 @@ import projectofinal.Reloj.Reloj;
 import projectofinal.Sem.Sem;
 
 
+
+
 public class Celular {
 	private int numero ; 
 	private AppCliente app ;
@@ -61,8 +63,10 @@ public class Celular {
 		app.inicioEstacionamiento(sem, patente, this);
 	}
 	
+	
 	public void appFinEstacionamiento(Sem sem) {
 		app.finEstacionamiento(sem ,this);
+		
 	}
 
 	public void cambiarModo(ModoApp modo) {

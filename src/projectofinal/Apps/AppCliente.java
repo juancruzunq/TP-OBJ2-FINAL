@@ -27,7 +27,8 @@ public class AppCliente extends App implements  MovementSensor {
 		mensajeInicioEstacionamiento(sem,celular);
 		this.setEstaVigente(true);
 	}
-
+	
+	
 	public void finEstacionamiento(Sem sem, Celular celular) {
 		ZonaDeEstacionamiento zona = celular.getGps();
 		Integer numTel = celular.getNumero();
@@ -38,6 +39,9 @@ public class AppCliente extends App implements  MovementSensor {
 		mensajeFinEstacionamiento(estacionamiento,celular);
 		this.setEstaVigente(false);
 	}
+	
+	
+	
 	
 	
 	private String mensajeInicioEstacionamiento(Sem sem , Celular celular) {

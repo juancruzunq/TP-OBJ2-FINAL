@@ -58,14 +58,27 @@ public class Sem implements RelojListener {
 	public void setNumeroDeControl(int numeroDeControl) {
 		this.numeroDeControl = numeroDeControl;
 	}
+	
+	
+
+	public ArrayList<RRecarga> getRegistroDeRecargas() {
+		return registroDeRecargas;
+	}
+
+	public void setRegistroDeRecargas(ArrayList<RRecarga> registroDeRecargas) {
+		this.registroDeRecargas = registroDeRecargas;
+	}
 
 	public ArrayList<REstacionamiento> getRegistroDeEstacionamientos() {
 		return registroDeEstacionamientos;
 	}
 
+	//cambio?
 	public Integer obtenerSaldo(Celular celular) {
 		Integer numero = celular.getNumero();
-		
+		if (!this.registroDeCreditos.containsKey(numero)) {
+			return 0;
+		}
 		return (int)registroDeCreditos.get(numero);
 		
 	}
@@ -87,9 +100,10 @@ public class Sem implements RelojListener {
     }
 	
 	private void notificarEstacionamiento(REstacionamiento registro) {
-		subscriptores.forEach(sub -> sub.alertarInicioFinEstacionamiento(registro.getHoraInicio(), registro.getHoraFin()));
+			subscriptores.forEach(sub -> sub.alertarInicioFinEstacionamiento(registro.getHoraInicio(), registro.getHoraFin()));
+		}
 		
-	}
+
 	
 	public void Subscribir(Subscriptor subscriptor) {
 		subscriptores.add(subscriptor);

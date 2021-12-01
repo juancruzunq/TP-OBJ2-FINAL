@@ -38,8 +38,10 @@ public class Conductor {
 		celular.appInicioEstacionamiento(sem, this.getAuto().getPatente());
 	}
 	
+	
 	public void celularFinEstacionamiento(Sem sem) {
 		celular.appFinEstacionamiento(sem);
+		
 	}
 	
 	public void puntoDeVentaEstacionamiento(Sem sem ,int horas,PuntoDeVenta puntoVenta) {
