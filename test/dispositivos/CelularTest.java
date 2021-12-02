@@ -7,15 +7,13 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 
 
 import java.sql.Date;
-import java.util.HashMap;
-import java.util.Map;
-
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 import projectofinal.Apps.AppCliente;
-import projectofinal.Apps.ModoApp;
-import projectofinal.Apps.ModoMovimiento;
+import projectofinal.Apps.Automatico;
+import projectofinal.Apps.Manual;
+import projectofinal.Apps.Walking;
 import projectofinal.Dispositivos.Celular;
 import projectofinal.Estacionamiento.ZonaDeEstacionamiento;
 import projectofinal.Reloj.Reloj;
@@ -44,7 +42,7 @@ public class CelularTest {
 	public void setUp() throws Exception {
 		numero = 1131263742;
 		reloj = new Reloj(2000, new Date(25, 11, 2021));
-		app = new AppCliente(reloj, ModoApp.MANUAL, ModoMovimiento.Walking, true);
+		app = new AppCliente(reloj, new Manual(), new Walking(app), true);
 		celular = new Celular(numero, reloj);
 		celular.instalarApp(app);
 		gps = new ZonaDeEstacionamiento();
@@ -58,9 +56,9 @@ public class CelularTest {
 	@Test
 	public void test_Cambiar_Modo() {
 		
-		assertTrue(ModoApp.MANUAL==app.getModoApp());
-		celular.cambiarModo(ModoApp.AUTOMATICO);
-		assertEquals(ModoApp.AUTOMATICO,app.getModoApp());
+		assertTrue(app.getModoApp().getClass() == Manual.class);
+		celular.cambiarModo(new Automatico());
+		assertEquals(Automatico.class, app.getModoApp().getClass());
 		
 	}
 	

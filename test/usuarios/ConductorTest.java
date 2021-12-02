@@ -6,11 +6,10 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import static org.junit.Assert.assertTrue;
 import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertIterableEquals;
-
 import projectofinal.Apps.AppCliente;
-import projectofinal.Apps.ModoApp;
-import projectofinal.Apps.ModoMovimiento;
+import projectofinal.Apps.Automatico;
+import projectofinal.Apps.Manual;
+import projectofinal.Apps.Walking;
 import projectofinal.Dispositivos.Celular;
 import projectofinal.Estacionamiento.ZonaDeEstacionamiento;
 import projectofinal.Reloj.Reloj;
@@ -35,10 +34,6 @@ public class ConductorTest {
 	
 	
 	
-	
-	
-	
-	
 	@SuppressWarnings("deprecation")
 	@BeforeEach
 	public void setUp() throws Exception {
@@ -48,7 +43,7 @@ public class ConductorTest {
 		
 		auto = new Auto(patente);
 		reloj = new Reloj(1600, new Date(30, 11, 2021));
-		app = new AppCliente(reloj, ModoApp.MANUAL, ModoMovimiento.Walking, false);
+		app = new AppCliente(reloj, new Manual(), new Walking(app), false);
 		celular = new Celular(numero, reloj);
 		celular.instalarApp(app);
 		gps = new ZonaDeEstacionamiento();
@@ -85,8 +80,8 @@ public class ConductorTest {
 	@Test
 	public void cambiarModo() {
 		
-		conductor.celularCambiarModo(ModoApp.AUTOMATICO);
-		assertEquals(ModoApp.AUTOMATICO,conductor.getCelular().getApp().getModoApp());
+		conductor.celularCambiarModo(new Automatico());
+		assertEquals(new Automatico().getClass(),conductor.getCelular().getApp().getModoApp().getClass());
 		
 	}
 	
