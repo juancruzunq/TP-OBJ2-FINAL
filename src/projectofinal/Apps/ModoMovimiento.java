@@ -3,42 +3,25 @@ package projectofinal.Apps;
 import projectofinal.Dispositivos.Celular;
 import projectofinal.Sem.Sem;
 
-public enum ModoMovimiento {
+public abstract class ModoMovimiento {
+	private AppCliente app;
 	
-	Driving {
+	public ModoMovimiento(AppCliente app) {
+		this.app = app;
+	}
 		
-		@Override
-		public void cambiarAWalking(AppCliente app, Sem sem, String patente, Celular celular) {
-			if(!app.getEstaVigente() && celular.estaEnZonaDeEstacionamiento()) {
-				app.setModoMovimiento(ModoMovimiento.Walking);
-				app.getModoApp().ejecutarIniciacion(sem, celular, patente, app);
-			}
-		}
-
-		@Override
-		public void cambiarADriving(AppCliente app, Sem sem, Celular celular) {
-			
-		}
-	}, 
+	public abstract void posibleInicioEstacionamiento(Sem sem, Celular celular, String patente);
 	
-	Walking {
-		
-		@Override
-		public void cambiarAWalking(AppCliente app, Sem sem, String patente, Celular celular) {
-			
-		}
+	public abstract void posibleFinEstacionamiento(Sem sem, Celular celular);
 
-		@Override
-		public void cambiarADriving(AppCliente app, Sem sem, Celular celular) {
-			if(app.getEstaVigenteEnMismaZona(celular)) {
-				app.setModoMovimiento(ModoMovimiento.Driving);
-				app.getModoApp().ejecutarFinalizacion(sem, celular, app);
-			}
-		}
-	};
+	public AppCliente getApp() {
+		return app;
+	}
 
+	public void setApp(AppCliente app) {
+		this.app = app;
+	}
 	
-	public abstract void cambiarAWalking(AppCliente app, Sem sem, String patente, Celular celular);
-
-	public abstract void cambiarADriving(AppCliente app, Sem sem, Celular celular);
+	
+	
 }
