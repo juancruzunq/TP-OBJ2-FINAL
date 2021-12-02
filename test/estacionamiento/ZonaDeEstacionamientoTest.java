@@ -40,7 +40,7 @@ public class ZonaDeEstacionamientoTest {
 		private ZonaDeEstacionamiento gps;
 		private Conductor conductor;
 		private Celular celularCliente;
-		private App appCliente;
+		private AppCliente appCliente;
 		private Integer numeroCliente;
 		private REstacionamiento carga;
 		private REstacionamiento carga1;
@@ -144,5 +144,5 @@ public class ZonaDeEstacionamientoTest {
 		assertEquals(1,gps.getEstacionamientosVigentes().size());
 		
 		
-		
 	}
+}
