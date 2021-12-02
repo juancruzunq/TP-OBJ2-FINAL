@@ -33,7 +33,7 @@ public class AppCliente extends App implements  MovementSensor {
 		ZonaDeEstacionamiento zona = celular.getGps();
 		Integer numTel = celular.getNumero();
 		ArrayList<REstacionamiento> registros = zona.getEstacionamientosVigentes();
-		REstacionamiento estacionamiento = (REstacionamiento) registros.stream().filter(r -> r.getCelularNumero().equals(numTel));
+		REstacionamiento estacionamiento =  registros.stream().filter(r -> r.getCelularNumero().equals(numTel)).findFirst().get();
 		zona.finalizarEstacionamientoVigente(estacionamiento);
 		sem.setSaldo(celular,(sem.obtenerSaldo(celular) - costoEstacionamiento(estacionamiento)));
 		mensajeFinEstacionamiento(estacionamiento,celular);

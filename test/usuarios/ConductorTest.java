@@ -88,12 +88,7 @@ public class ConductorTest {
 	
 	@Test
 	public void puntoDeVentaEstacionamiento() {
-		/*
-		assertTrue(sem.getRegistroDeRecargas().size() == 0);
-		assertTrue(sem.getNumeroDeControl() == 0);
-		assertTrue(sem.getRegistroDeEstacionamientos().size() == 0);
-		assertTrue(gps.getEstacionamientosVigentes().size()== 0);
-		*/
+		
 		
 		conductor.puntoDeVentaEstacionamiento(sem, 5, puntoDeVenta);
 		
@@ -104,7 +99,7 @@ public class ConductorTest {
 		
 		conductor.puntoDeVentaEstacionamiento(sem, 5, puntoDeVenta);
 		
-	} // si le paso 2 veces el mismo conductor no deberia  sumar otro estacionamiento vigente.
+	} 
 	
 	
 	@Test 
@@ -124,6 +119,26 @@ public class ConductorTest {
 		assertEquals(1,sem.getRegistroDeEstacionamientos().size());
 		assertEquals(true,app.getEstaVigente());
 		assertEquals(1,gps.getEstacionamientosVigentes().size());
+		
+	}
+	
+	
+	@Test
+	public void finEstacionamiento() {
+		puntoDeVenta.recargarCelular(sem, celular, 500);
+		conductor.celularInicioEstacionamiento(sem);
+		
+		assertEquals(1,sem.getRegistroDeEstacionamientos().size());
+		assertEquals(true,app.getEstaVigente());
+		assertEquals(1,gps.getEstacionamientosVigentes().size());
+		
+		conductor.celularFinEstacionamiento(sem);
+		
+		assertEquals(0,gps.getEstacionamientosVigentes().size());
+		assertEquals(false,app.getEstaVigente());
+		//asserEquals(300,sem.obtenerSaldo(celular));
+		
+		
 		
 	}
 	

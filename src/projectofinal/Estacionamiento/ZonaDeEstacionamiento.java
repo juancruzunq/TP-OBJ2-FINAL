@@ -20,6 +20,14 @@ public class ZonaDeEstacionamiento implements RelojListener{
 		estacionamientosVigentes.clear();
 	}
 
+	public ArrayList<PuntoDeVenta> getPuntosDeVenta() {
+		return puntosDeVenta;
+	}
+
+	public void setPuntosDeVenta(ArrayList<PuntoDeVenta> puntosDeVenta) {
+		this.puntosDeVenta = puntosDeVenta;
+	}
+
 	@Override
 	public void horaActualizada(int hora) {
 		for (REstacionamiento estacionamiento : estacionamientosVigentes) {

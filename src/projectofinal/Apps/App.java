@@ -3,6 +3,7 @@ package projectofinal.Apps;
 import java.util.ArrayList;
 import java.util.Date;
 
+import projectofinal.Dispositivos.Celular;
 import projectofinal.Estacionamiento.REstacionamiento;
 import projectofinal.Estacionamiento.ZonaDeEstacionamiento;
 import projectofinal.Sem.RInfraccion;
@@ -44,6 +45,30 @@ public class App {
 	
 	public ArrayList<REstacionamiento> estacionamientosVigentes(ZonaDeEstacionamiento estacionamiento) {
 		return estacionamiento.getEstacionamientosVigentes();
+	}
+
+
+	public void inicioEstacionamiento(Sem sem, String patente, Celular celular) {
+		// TODO Auto-generated method stub
+		
+	}
+
+
+	public void finEstacionamiento(Sem sem, Celular celular) {
+		// TODO Auto-generated method stub
+		
+	}
+
+
+	public void cambiarAModo(ModoApp modo) {
+		// TODO Auto-generated method stub
+		
+	}
+
+
+	public Object getModoApp() {
+		// TODO Auto-generated method stub
+		return null;
 	}
 
 }

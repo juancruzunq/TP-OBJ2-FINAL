@@ -38,6 +38,14 @@ public class Sem implements RelojListener {
 		
 	}
 	
+	public Map<Auto, List<RInfraccion>> getRegistroDeInfracciones() {
+		return registroDeInfracciones;
+	}
+
+	public void setRegistroDeInfracciones(Map<Auto, List<RInfraccion>> registroDeInfracciones) {
+		this.registroDeInfracciones = registroDeInfracciones;
+	}
+
 	public void registrarInfraccion(Auto auto, RInfraccion infraccion) {
 		List<RInfraccion> listaDeInfracciones = new ArrayList<RInfraccion>();
 		if (registroDeInfracciones.containsKey(auto)) {
@@ -73,7 +81,7 @@ public class Sem implements RelojListener {
 		return registroDeEstacionamientos;
 	}
 
-	//cambio?
+	
 	public Integer obtenerSaldo(Celular celular) {
 		Integer numero = celular.getNumero();
 		if (!this.registroDeCreditos.containsKey(numero)) {

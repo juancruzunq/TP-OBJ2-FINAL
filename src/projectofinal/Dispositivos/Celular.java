@@ -1,5 +1,6 @@
 package projectofinal.Dispositivos;
 
+import projectofinal.Apps.App;
 import projectofinal.Apps.AppCliente;
 import projectofinal.Apps.ModoApp;
 import projectofinal.Estacionamiento.ZonaDeEstacionamiento;
@@ -8,7 +9,7 @@ import projectofinal.Sem.Sem;
 
 public class Celular {
 	private int numero ; 
-	private AppCliente app ;
+	private App app ;
 	private Reloj reloj ;
 	private ZonaDeEstacionamiento gps;
 
@@ -20,7 +21,7 @@ public class Celular {
 	}
 	
 	
-	public void instalarApp(AppCliente app) {
+	public void instalarApp(App app) {
 		this.setApp(app);
 	}
 
@@ -48,11 +49,11 @@ public class Celular {
 		this.numero = numero;
 	}
 	
-	public AppCliente getApp() {
+	public App getApp() {
 		return app;
 	}
 
-	public void setApp(AppCliente app) {
+	public void setApp(App app) {
 		this.app = app;
 	}
 
