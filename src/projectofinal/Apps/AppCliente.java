@@ -114,18 +114,26 @@ public class AppCliente extends App implements  MovementSensor {
 
 	@Override
 	public void driving(Sem sem, Celular celular) {
-		this.getModoMovimiento().cambiarADriving(this, sem, celular);
+		this.cambiarModoMovimientoA(new Driving(this), sem, celular, null);
 			
 	}
 	
-	public Boolean getEstaVigenteEnMismaZona(Celular celular) {
-		return celular.getGps().hayEstacionamientoVigenteApp(celular.getNumero());
-	}
-
 	@Override
 	public void walking(Sem sem, String patente, Celular celular) {
-		this.getModoMovimiento().cambiarAWalking(this, sem, patente, celular);
+		this.cambiarModoMovimientoA(new Walking(this), sem, celular, patente);
 			
+	}
+
+	
+	private void cambiarModoMovimientoA(ModoMovimiento modo, Sem sem, Celular celular, String patente) {
+		this.setModoMovimiento(modo);
+		this.modoMovimiento.posibleInicioEstacionamiento(sem, celular, patente);
+		this.modoMovimiento.posibleFinEstacionamiento(sem, celular);
+	}
+
+
+	public Boolean getEstaVigenteEnMismaZona(Celular celular) {
+		return celular.getGps().hayEstacionamientoVigenteApp(celular.getNumero());
 	}
 
 	public String alerta(String string) {

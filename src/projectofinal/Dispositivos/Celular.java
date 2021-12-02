@@ -6,9 +6,6 @@ import projectofinal.Estacionamiento.ZonaDeEstacionamiento;
 import projectofinal.Reloj.Reloj;
 import projectofinal.Sem.Sem;
 
-
-
-
 public class Celular {
 	private int numero ; 
 	private AppCliente app ;
