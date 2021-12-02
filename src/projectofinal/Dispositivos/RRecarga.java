@@ -4,7 +4,7 @@ import java.util.Date;
 
 import projectofinal.Sem.PuntoDeVenta;
 
-public abstract class RRecarga {
+public class RRecarga {
 	private int numeroDeControl;
 	private PuntoDeVenta puntoDeVenta;
 	private Date fecha;
