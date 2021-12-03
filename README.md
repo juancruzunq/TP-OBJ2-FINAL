@@ -7,5 +7,3 @@ Dominguez Matias
 Sanchez Federico Hernan
 Sanchez Juan Cruz
 
-
-No se completetaron los test por error en Junit y en la implementacion del desarrollo
