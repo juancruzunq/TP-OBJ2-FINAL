@@ -87,7 +87,7 @@ public class AppCliente extends App implements  MovementSensor {
 	
 	private Integer costoEstacionamiento(REstacionamiento estacionamiento) {
 		
-		return (estacionamiento.getHoraFin()-estacionamiento.getHoraInicio()) / 100 *40;
+		return (estacionamiento.getHoraFin() - estacionamiento.getHoraInicio()) / 100 *40;
 	}
 	
 	

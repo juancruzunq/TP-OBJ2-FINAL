@@ -133,7 +133,7 @@ public class ConductorTest {
 		
 		assertEquals(0,gps.getEstacionamientosVigentes().size());
 		assertEquals(false,app.getEstaVigente());
-		//assertEquals(300,sem.obtenerSaldo(celular));
+		assertEquals(340,sem.obtenerSaldo(celular));
 		
 	}
 	

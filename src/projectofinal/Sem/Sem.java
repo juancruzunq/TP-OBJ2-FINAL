@@ -91,7 +91,7 @@ public class Sem implements RelojListener {
 		
 	}
 
-	public void setSaldo(Celular celular,Integer monto) {
+	public void sumarSaldo(Celular celular,Integer monto) {
 		Integer numero = celular.getNumero();
 		Integer nuevoMonto;
 		if(registroDeCreditos.containsKey(numero)) {
@@ -101,6 +101,10 @@ public class Sem implements RelojListener {
 		else {
 			registroDeCreditos.put(numero, monto);
 		}
+	}
+	
+	public void setSaldo(Celular celular,Integer monto) {
+		registroDeCreditos.put(celular.getNumero(), monto);
 	}
 	
 	public ArrayList<ZonaDeEstacionamiento> getZonasDeEstacionamiento() {

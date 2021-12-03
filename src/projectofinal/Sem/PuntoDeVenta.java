@@ -20,7 +20,7 @@ public class PuntoDeVenta {
 	}
 
 	public void recargarCelular(Sem sem,Celular celular, int monto) {
-		sem.setSaldo(celular , monto);
+		sem.sumarSaldo(celular , monto);
 		registrarRecargaCelular(sem, celular, monto);
 	}
 
