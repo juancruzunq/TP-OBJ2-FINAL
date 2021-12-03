@@ -18,10 +18,6 @@ public abstract class ModoMovimiento {
 		return app;
 	}
 
-	public void setApp(AppCliente app) {
-		this.app = app;
-	}
-	
 	
 	
 }

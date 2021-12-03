@@ -37,16 +37,8 @@ public class Celular {
 		this.gps = gps;
 	}
 
-	public void setReloj(Reloj reloj) {
-		this.reloj = reloj;
-	}
-
 	public int getNumero() {
 		return numero;
-	}
-
-	public void setNumero(int numero) {
-		this.numero = numero;
 	}
 	
 	public App getApp() {

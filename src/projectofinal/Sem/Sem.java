@@ -103,6 +103,10 @@ public class Sem implements RelojListener {
 		}
 	}
 	
+	public ArrayList<ZonaDeEstacionamiento> getZonasDeEstacionamiento() {
+		return zonasDeEstacionamiento;
+	}
+
 	private void notificarCompra(RRecarga compra) {
         subscriptores.forEach(sub -> sub.alertarCompra(compra));
     }
@@ -133,4 +137,9 @@ public class Sem implements RelojListener {
 			zona.finalizarEstacionamiento();
 		}
 	}
+
+	public void setZonasDeEstacionamiento(ArrayList<ZonaDeEstacionamiento> zonasDeEstacionamiento) {
+		this.zonasDeEstacionamiento = zonasDeEstacionamiento;
+	}
+	
 }

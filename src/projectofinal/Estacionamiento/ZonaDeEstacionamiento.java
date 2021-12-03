@@ -13,19 +13,12 @@ public class ZonaDeEstacionamiento implements RelojListener{
 	
 	
 	
-	
-	
-	
 	public void finalizarEstacionamiento() {
 		estacionamientosVigentes.clear();
 	}
 
 	public ArrayList<PuntoDeVenta> getPuntosDeVenta() {
 		return puntosDeVenta;
-	}
-
-	public void setPuntosDeVenta(ArrayList<PuntoDeVenta> puntosDeVenta) {
-		this.puntosDeVenta = puntosDeVenta;
 	}
 
 	@Override

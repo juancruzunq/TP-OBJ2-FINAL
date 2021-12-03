@@ -35,20 +35,5 @@ public class RInfraccion {
 		return zona;
 	}
 
-	public void setFecha(Date fecha) {
-		this.fecha = fecha;
-	}
-
-	public void setHora(int hora) {
-		this.hora = hora;
-	}
-
-	public void setInspector(Inspector inspector) {
-		this.inspector = inspector;
-	}
-
-	public void setZona(ZonaDeEstacionamiento zona) {
-		this.zona = zona;
-	}
 	
 }

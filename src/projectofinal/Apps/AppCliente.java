@@ -100,10 +100,6 @@ public class AppCliente extends App implements  MovementSensor {
 		return modoApp;
 	}
 
-	public ModoMovimiento getModoMovimiento() {
-		return modoMovimiento;
-	}
-
 	public void setModoApp(ModoApp modoApp) {
 		this.modoApp = modoApp;
 	}
