@@ -39,7 +39,7 @@ public class AppClienteTest {
 	private ModoApp modoManual;
 	private ModoApp modoAutomatico;
 	
-	@BeforeEach
+	@BeforeEach //SetUp
 	public void setUp() throws Exception {
 		numero = 1131263742;
 		modoManual = mock(Manual.class);
@@ -55,7 +55,8 @@ public class AppClienteTest {
 	}
 	
 	@Test
-	public void walkingTest() {
+	public void posibleInicioTest() {
+		//Exercise
 		when(conductor.getAuto()).thenReturn(auto);
 		when(auto.getPatente()).thenReturn("1");
 		when(celular.getGps()).thenReturn(zona);
@@ -63,11 +64,13 @@ public class AppClienteTest {
 		app.cambiarAModo(modoAutomatico);
 		app.driving(sem, celular);
 		app.walking(sem, "1", celular);
+		//Assert
 		verify(modoAutomatico).ejecutarIniciacion(sem, celular, "1", app);
 	}
 	
 	@Test
-	public void drivingTest() {
+	public void posibleFinalizacionTest() {
+		//Exercise
 		when(conductor.getAuto()).thenReturn(auto);
 		when(auto.getPatente()).thenReturn("1");
 		when(celular.getGps()).thenReturn(zona);
@@ -75,11 +78,13 @@ public class AppClienteTest {
 		when(zona.hayEstacionamientoVigenteApp(celular.getNumero())).thenReturn(true);
 		app.cambiarAModo(modoAutomatico);
 		app.driving(sem, celular);
+		//Assert
 		verify(modoAutomatico).ejecutarFinalizacion(sem, celular, app);
 	}
 	
 	@Test 
-	public void alertaAdminTest() {
+	public void usoDeMensajesAdminEnCliente() {
+		//Assert
 		assertFalse(app.consultaDeEstacionamientoVigente(auto, zona));
 		assertEquals(app.estacionamientosVigentes(zona).size(), 0);
 		

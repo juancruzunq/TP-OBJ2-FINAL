@@ -24,8 +24,6 @@ import projectofinal.Usuarios.Auto;
 import projectofinal.Usuarios.Conductor;
 import projectofinal.Usuarios.Inspector;
 
-
-
 public class ZonaDeEstacionamientoTest {
 	
 		private Inspector inspector;
@@ -46,11 +44,6 @@ public class ZonaDeEstacionamientoTest {
 		private REstacionamiento carga1;
 		private Sem sem;
 		
-		
-	
-	
-	
-	
 	@SuppressWarnings("deprecation")
 	@BeforeEach
 	public void setUp() throws Exception {
@@ -130,19 +123,14 @@ public class ZonaDeEstacionamientoTest {
 	}
 	
 	
-	// falla?
 	@Test 
 	public void horaActualizada() {
-		
-		
-		
+		//Exercise
 		gps.agregarVigente(carga);
 		gps.agregarVigente(carga1); 
-		
 		gps.horaActualizada(2000);
-		
-		assertEquals(1,gps.getEstacionamientosVigentes().size());
-		
+		//Assert
+		assertEquals(0,gps.getEstacionamientosVigentes().size());
 		
 	}
 }

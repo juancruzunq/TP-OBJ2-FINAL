@@ -73,8 +73,10 @@ public class CelularTest {
 	
 	
 	@Test
-	public void test() {
+	public void test_recarga_celular() {
+		//Exercise
 		puntoDeVenta.recargarCelular(sem, celular, 100);
+		//Assert
 		assertEquals(conductor.obtenerSaldo(sem), 100);
 	}
 	

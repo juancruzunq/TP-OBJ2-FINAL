@@ -13,7 +13,6 @@ public class PuntoDeVenta {
 	private Reloj reloj;
 	private ZonaDeEstacionamiento zona;
 	
-	
 	public PuntoDeVenta(Reloj reloj, ZonaDeEstacionamiento zona) {
 		super();
 		this.reloj = reloj;
@@ -49,9 +48,10 @@ public class PuntoDeVenta {
 	private void registrarRecargaCelular(Sem sem ,Celular celular, int monto) {
 		RRecarga registro = new RRecargaCelular(this, reloj.getFechaActual(), reloj.getHoraActual(), monto, celular);
 		sem.registrarCompra(registro);
-		
-		
 	}
-	
+
+	public ZonaDeEstacionamiento getZona() {
+		return zona;
+	}
 	
 }

@@ -21,7 +21,7 @@ public class AppCliente extends App implements  MovementSensor {
 
 	public void inicioEstacionamiento(Sem sem, String patente, Celular celular) {
 		ZonaDeEstacionamiento zona = celular.getGps();
-		REstacionamientoApp estacionamiento = new REstacionamientoApp(patente,celular.getReloj().getHoraActual() ,0, celular);
+		REstacionamientoApp estacionamiento = new REstacionamientoApp(patente,celular.getReloj().getHoraActual() ,this.horaMaximaControlador(sem, celular), celular);
 		sem.registrarEstacionamiento(estacionamiento);
 		zona.agregarVigente(estacionamiento);
 		mensajeInicioEstacionamiento(sem,celular);
@@ -75,24 +75,19 @@ public class AppCliente extends App implements  MovementSensor {
 	}
 	
 
-	private String horaMaximaControlador(Sem sem, Celular celular) {
-		StringBuffer mensaje = new StringBuffer();
+	private Integer horaMaximaControlador(Sem sem, Celular celular) {
 		Integer credito = sem.obtenerSaldo(celular);
-		int tiempoDisponible = (credito / 40);
+		int tiempoDisponible = (credito / 40) * 100;
 		Integer horaMaxima = celular.getReloj().getHoraActual() + tiempoDisponible; 
-		if(horaMaxima>20) {
-			mensaje.append("20:00");
+		if(horaMaxima>2000) {
+			horaMaxima = 2000;
 		}
-		else {
-			String horaActual = celular.getReloj().formatoControlador(horaMaxima);
-			mensaje.append(horaActual);
-		}
-		return mensaje.toString();
+		return horaMaxima;
 	}
 	
 	private Integer costoEstacionamiento(REstacionamiento estacionamiento) {
 		
-		return (estacionamiento.getHoraFin()-estacionamiento.getHoraInicio())*40;
+		return (estacionamiento.getHoraFin()-estacionamiento.getHoraInicio()) / 100 *40;
 	}
 	
 	
@@ -123,8 +118,7 @@ public class AppCliente extends App implements  MovementSensor {
 	
 	private void cambiarModoMovimientoA(ModoMovimiento modo, Sem sem, Celular celular, String patente) {
 		this.setModoMovimiento(modo);
-		this.modoMovimiento.posibleInicioEstacionamiento(sem, celular, patente);
-		this.modoMovimiento.posibleFinEstacionamiento(sem, celular);
+		this.modoMovimiento.posibleInicioOFinEstacionamiento(sem, celular, patente);
 	}
 
 

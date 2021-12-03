@@ -11,13 +11,7 @@ public class Driving extends ModoMovimiento {
 	}
 
 	@Override
-	public void posibleInicioEstacionamiento(Sem sem, Celular celular, String patente) {
-		
-		
-	}
-
-	@Override
-	public void posibleFinEstacionamiento(Sem sem, Celular celular) {
+	protected void posibleInicioOFinEstacionamiento(Sem sem, Celular celular, String patente) {
 		if(this.getApp().getEstaVigenteEnMismaZona(celular)) {
 			this.getApp().getModoApp().ejecutarFinalizacion(sem, celular, this.getApp());
 		}

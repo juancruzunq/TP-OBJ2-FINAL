@@ -51,8 +51,7 @@ public class ConductorTest {
 		sem = new Sem();
 		puntoDeVenta = new PuntoDeVenta(reloj, gps);
 		conductor = new Conductor(auto, celular);
-		
-		
+			
 	}
 	
 	@Test
@@ -79,8 +78,9 @@ public class ConductorTest {
 	
 	@Test
 	public void cambiarModo() {
-		
+		//Exercise
 		conductor.celularCambiarModo(new Automatico());
+		//Assert
 		assertEquals(new Automatico().getClass(),conductor.getCelular().getApp().getModoApp().getClass());
 		
 	}
@@ -88,16 +88,13 @@ public class ConductorTest {
 	
 	@Test
 	public void puntoDeVentaEstacionamiento() {
-		
-		
+		//Exercise
 		conductor.puntoDeVentaEstacionamiento(sem, 5, puntoDeVenta);
-		
+		//Assert
 		assertTrue(gps.getEstacionamientosVigentes().size()== 1);
 		assertTrue(sem.getRegistroDeEstacionamientos().size() == 1);
 		assertTrue(sem.getNumeroDeControl() == 1);
 		assertTrue(sem.getRegistroDeRecargas().size() == 1);
-		
-		conductor.puntoDeVentaEstacionamiento(sem, 5, puntoDeVenta);
 		
 	} 
 	
@@ -136,9 +133,7 @@ public class ConductorTest {
 		
 		assertEquals(0,gps.getEstacionamientosVigentes().size());
 		assertEquals(false,app.getEstaVigente());
-		//asserEquals(300,sem.obtenerSaldo(celular));
-		
-		
+		//assertEquals(300,sem.obtenerSaldo(celular));
 		
 	}
 	

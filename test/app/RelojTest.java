@@ -65,16 +65,16 @@ public class RelojTest {
 	}
 	@Test
 	public void test_add_listener() {
-		assertEquals(0, reloj.getListener().size());
+		//Exercise
 		reloj.agregarListener(listener1);
-		assertEquals(1, reloj.getListener().size());
 		reloj.agregarListener(listener2);
+		//Assert
 		assertEquals(2, reloj.getListener().size());
-		assertNotEquals(5, reloj.getListener().size());
 		
 	}
 	@Test
 	public void test_formato_controller() {
+		//Assert
 		assertEquals("19:00",reloj.formatoControlador(reloj.getHoraActual()));
 		assertNotEquals("11:00",reloj.formatoControlador(reloj.getHoraActual()));
 		
@@ -83,13 +83,16 @@ public class RelojTest {
 	@Test
 	
 	public void test_cambiar_hora() {
+		//Exercise
 		reloj.setHoraActual(1000);
+		//Assert
 		assertEquals(1000, reloj.getHoraActual());
 		
 	}
 	
 	@Test 
-	public void semListenerTest() {
+	public void finalizacionDeJornada() {
+		//Exercise
 		for (int i = 0 ; i<sem.getZonasDeEstacionamiento().size() ; i++) {
 			sem.getZonasDeEstacionamiento().get(i).agregarVigente(new REstacionamiento("1", 1400, 1600));
 		}
@@ -99,7 +102,7 @@ public class RelojTest {
 		for (int i = 0 ; i<sem.getZonasDeEstacionamiento().size() ; i++) {
 			sumaDeEstacionamientos =+ sem.getZonasDeEstacionamiento().get(i).getEstacionamientosVigentes().size();
 		}
-		
+		//Assert
 		assertEquals(sumaDeEstacionamientos, 0);
 	}
 	

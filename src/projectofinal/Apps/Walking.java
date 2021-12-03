@@ -11,16 +11,10 @@ public class Walking extends ModoMovimiento{
 	}
 
 	@Override
-	public void posibleInicioEstacionamiento(Sem sem, Celular celular, String patente) {
+	public void posibleInicioOFinEstacionamiento(Sem sem, Celular celular, String patente) {
 		if(!this.getApp().getEstaVigente() && celular.estaEnZonaDeEstacionamiento()) {
 			this.getApp().getModoApp().ejecutarIniciacion(sem, celular, patente, this.getApp());
 		}
-		
-	}
-
-	@Override
-	public void posibleFinEstacionamiento(Sem sem, Celular celular) {
-	
 		
 	}
 

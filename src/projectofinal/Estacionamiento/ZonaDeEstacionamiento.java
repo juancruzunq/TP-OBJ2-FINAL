@@ -23,9 +23,10 @@ public class ZonaDeEstacionamiento implements RelojListener{
 
 	@Override
 	public void horaActualizada(int hora) {
-		for (REstacionamiento estacionamiento : estacionamientosVigentes) {
-			if (estacionamiento.getHoraFin() <= hora) {
-				eliminarRegistro(estacionamiento);
+		for (int i=0; i<this.estacionamientosVigentes.size(); i++) {
+			if (this.estacionamientosVigentes.get(i).getHoraFin() <= hora) {
+				eliminarRegistro(this.estacionamientosVigentes.get(i));
+				i=i-1;
 			}
 		}
 	}
